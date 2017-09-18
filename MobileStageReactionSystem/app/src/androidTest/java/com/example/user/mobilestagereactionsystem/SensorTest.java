@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import ext.gestureDetection.base.Delegate;
-import ext.gestureDetection.base.DelegateRegister;
 import ext.gestureDetection.base.FVector;
 import ext.gestureDetection.base.SensorHandler;
 import ext.gestureDetection.monitors.AcceleroMeterMonitor;

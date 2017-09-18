@@ -1,9 +1,9 @@
 package ext.gestureDetection.patterns;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
-import java.util.Queue;
 
 import ext.gestureDetection.base.Delegate;
 import ext.gestureDetection.base.FVector;
@@ -16,10 +16,10 @@ import ext.gestureDetection.monitors.AcceleroMeterMonitor;
  */
 
 public class Recorder {
-    private AcceleroMeterMonitor monitor;
-    private List<FVector> vectors = new LimitedQueue<>(1000);
+    protected AcceleroMeterMonitor monitor;
+    protected List<FVector> vectors = new LimitedQueue<>(1000);
 
-    private boolean recording = false;
+    protected boolean recording = false;
 
     public Recorder() throws NoSensorHandlerException {
         this.monitor = new AcceleroMeterMonitor();
@@ -41,14 +41,12 @@ public class Recorder {
         this.monitor.attachSensorUpdateEvent(del);
     }
 
-    private void record(FVector vector) {
+    protected void record(FVector vector) {
         if (!recording) return;
 
         // Add to list
         vectors.add(vector);
-
-        // todo: calculate over all vectors
-
+        Log.d("TEST", vector.toString());
     }
 
     public void start() {
