@@ -63,12 +63,12 @@ public class FVector {
                 a.getZ() + b.getZ());
     }
 
-    public float getLength() {
+    public float length() {
         return distanceTo(nullVector);
     }
 
     public float angleBetween(FVector other) {
-        return 2.0f * (float) Math.atan(FVector.substract(this, other).getLength() / FVector.add(this, other).getLength());
+        return 2.0f * (float) Math.atan(FVector.substract(this, other).length() / FVector.add(this, other).length());
     }
 
     @Override
