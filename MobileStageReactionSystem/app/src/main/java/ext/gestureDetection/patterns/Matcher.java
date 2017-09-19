@@ -87,8 +87,8 @@ public class Matcher extends Recorder {
 
     //todo: move for UnitTests
     private boolean checkIfInBoundaries(FVector current, FVector other, float tolerance) {
-        float d = current.getLength();
-        float o = other.getLength();
+        float d = current.length();
+        float o = other.length();
 
         boolean ret = Math.abs((o - d * (1-tolerance)) / d) <= tolerance;
         if (!ret) return ret;
