@@ -96,8 +96,4 @@ public class Matcher extends Recorder {
         // assuming that tolerance is a percentage of angle (180)
         return 180 * tolerance > current.angleBetween(other);
     }
-
-    public List<FVector> getVectors() {
-        return vectors;
-    }
 }

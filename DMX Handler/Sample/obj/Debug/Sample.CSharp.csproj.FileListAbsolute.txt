@@ -1,0 +1,8 @@
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\bin\Debug\Sample.exe
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\bin\Debug\Sample.pdb
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\bin\Debug\eDmx.ArtNet.dll
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\bin\Debug\eDmx.ArtNet.pdb
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\obj\Debug\Sample.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\obj\Debug\Sample.CSharp.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\obj\Debug\Sample.exe
+C:\Users\User\Documents\School\S7\GitHub\ArtNet Library\ArtNet.Net\Sample\obj\Debug\Sample.pdb
