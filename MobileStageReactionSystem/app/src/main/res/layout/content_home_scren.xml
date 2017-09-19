@@ -13,8 +13,4 @@
     tools:context="com.example.user.mobilestagereactionsystem.HomeScren"
     tools:showIn="@layout/activity_home_scren">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
 </RelativeLayout>
