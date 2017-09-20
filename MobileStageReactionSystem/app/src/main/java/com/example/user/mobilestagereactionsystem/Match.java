@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.back.MemoryGestureHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.modals.Navigator;
 
@@ -46,6 +47,8 @@ public class Match extends AppCompatActivity {
         } catch (IOException e) {
             Log.d("\t\t\tGESTURE ERROR: ", e.getMessage());
         }
+
+        rec.addGestures(MemoryGestureHolder.getGestures());
 
         rec.getRegister().attachDelegate(new Delegate<Gesture>() {
             @Override

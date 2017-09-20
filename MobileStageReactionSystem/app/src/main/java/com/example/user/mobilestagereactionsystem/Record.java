@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
 
+import com.back.MemoryGestureHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ext.dataConversion.JSONConverter;
+import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Recorder;
 
 public class Record extends AppCompatActivity {
@@ -37,7 +39,9 @@ public class Record extends AppCompatActivity {
 
                 try {
                     Log.d("\t\t\t", "SENDING");
-                    Log.d("\t\t\tGESTURE RESULT: ", JSONConverter.convertToJSON(rec.dumpGesture()));
+                    Gesture g = new Gesture(1.5f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
+                    MemoryGestureHolder.addGesture(g);
+                    Log.d("\t\t\tGESTURE RESULT: ", JSONConverter.convertToJSON(g));
                 } catch (JsonProcessingException e) {
                     Log.d("\t\t\tGESTURE ERROR: ", e.getMessage());
                 }

@@ -23,8 +23,8 @@ public class Recorder {
 
     protected boolean recording = false;
 
-    private static final long MILLISECONDS_DISREGARD_START = 1000;
-    private static final long MILLISECONDS_DISREGARD_END = 1000;
+    private static final long MILLISECONDS_DISREGARD_START = 100;
+    private static final long MILLISECONDS_DISREGARD_END = 100;
 
     public Recorder() throws NoSensorHandlerException {
         this.monitor = new AcceleroMeterMonitor();
@@ -69,7 +69,7 @@ public class Recorder {
         // Make a new list with objects within time reach
         for (TimedObject<FVector> to : vectors) {
             if (to.getTime() >= start + MILLISECONDS_DISREGARD_START // If the object was measured after the tolerance zone
-                    || to.getTime() <= end - MILLISECONDS_DISREGARD_END) // If the object was measured before the tolerance zone
+                    && to.getTime() <= end - MILLISECONDS_DISREGARD_END) // If the object was measured before the tolerance zone
             {
                 // Add to list
                 newList.add(to);
