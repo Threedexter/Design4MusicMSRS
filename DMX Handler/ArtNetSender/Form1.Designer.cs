@@ -54,6 +54,9 @@
             this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.trackBar8 = new System.Windows.Forms.TrackBar();
+            this.Localcheckbox = new System.Windows.Forms.CheckBox();
+            this.IpTextBox = new System.Windows.Forms.TextBox();
+            this.IpLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -437,11 +440,41 @@
             this.trackBar8.TabIndex = 24;
             this.trackBar8.Scroll += new System.EventHandler(this.trackBar8_Scroll);
             // 
+            // Localcheckbox
+            // 
+            this.Localcheckbox.AutoSize = true;
+            this.Localcheckbox.Location = new System.Drawing.Point(745, 130);
+            this.Localcheckbox.Name = "Localcheckbox";
+            this.Localcheckbox.Size = new System.Drawing.Size(77, 17);
+            this.Localcheckbox.TabIndex = 27;
+            this.Localcheckbox.Text = "Local NET";
+            this.Localcheckbox.UseVisualStyleBackColor = true;
+            this.Localcheckbox.CheckedChanged += new System.EventHandler(this.Localcheckbox_CheckedChanged);
+            // 
+            // IpTextBox
+            // 
+            this.IpTextBox.Location = new System.Drawing.Point(768, 153);
+            this.IpTextBox.Name = "IpTextBox";
+            this.IpTextBox.Size = new System.Drawing.Size(122, 20);
+            this.IpTextBox.TabIndex = 28;
+            // 
+            // IpLabel
+            // 
+            this.IpLabel.AutoSize = true;
+            this.IpLabel.Location = new System.Drawing.Point(742, 156);
+            this.IpLabel.Name = "IpLabel";
+            this.IpLabel.Size = new System.Drawing.Size(20, 13);
+            this.IpLabel.TabIndex = 29;
+            this.IpLabel.Text = "IP:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 261);
+            this.Controls.Add(this.IpLabel);
+            this.Controls.Add(this.IpTextBox);
+            this.Controls.Add(this.Localcheckbox);
             this.Controls.Add(this.numericUpDown8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.trackBar8);
@@ -519,6 +552,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TrackBar trackBar8;
+        private System.Windows.Forms.CheckBox Localcheckbox;
+        private System.Windows.Forms.TextBox IpTextBox;
+        private System.Windows.Forms.Label IpLabel;
     }
 }
 

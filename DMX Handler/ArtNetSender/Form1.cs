@@ -29,15 +29,32 @@ namespace ArtNetSender
             if (artnet == null || !artnet.PortOpen)
             {
                 artnet.EnableBroadcast = true;
-                artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.0"));
-                Console.WriteLine(artnet.BroadcastAddress.ToString());
-                Console.WriteLine("opened UDP connection...");
+                if (Localcheckbox.Checked)
+                {
+                    artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.0"));
+                }
+                else
+                {
+                    try
+                    {
+                        artnet.Open(IPAddress.Parse(IpTextBox.Text), IPAddress.Parse("255.255.255.0"));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Something went wrong, \n" + ex.Message);
+                        return;
+                    }
+                }
+                //Console.WriteLine(artnet.BroadcastAddress.ToString());
+                //Console.WriteLine("opened UDP connection...");
                 _dmxData = new byte[512];
                 label2.Text = "CONNECTED";
                 label2.ForeColor = Color.Green;
                 button1.Enabled = false;
             }
         }
+
+        #region Trackbar form controls
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -86,6 +103,7 @@ namespace ArtNetSender
             label9.Text = trackBar8.Value.ToString();
             SendPacket((int)numericUpDown8.Value, Convert.ToByte(trackBar8.Value));
         }
+        #endregion
 
         public void SendPacket(int channel, byte value)
         {
@@ -94,14 +112,22 @@ namespace ArtNetSender
                 _dmxData[channel - 1] = value;
                 ArtNet.Packets.ArtNetDmxPacket packet = new ArtNet.Packets.ArtNetDmxPacket();
                 packet.Universe = 0;
-                Console.WriteLine("Packet protocol:" + packet.Protocol.ToString() + ", Packet Version:" + packet.Version + ", Datagram OpCode:" + packet.OpCode);
+                //Console.WriteLine("Packet protocol:" + packet.Protocol.ToString() + ", Packet Version:" + packet.Version + ", Datagram OpCode:" + packet.OpCode);
                 packet.DmxData = _dmxData;
                 artnet.Send(packet);
-                Console.WriteLine("sent data packet");
+                //Console.WriteLine("sent data packet");
             }
             else
             {
-                Console.WriteLine("uninitialized properties");
+                //Console.WriteLine("uninitialized properties");
+            }
+        }
+
+        private void Localcheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Localcheckbox.Checked)
+            {
+                IpTextBox.Enabled = false;
             }
         }
     }
