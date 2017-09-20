@@ -17,7 +17,6 @@ import ext.gestureDetection.exceptions.NoSensorHandlerException;
 
 public class AcceleroMeterMonitor implements SensorMonitor {
 
-    private FVector velocity = new FVector();
     private SensorReader Accelero;
     private DelegateRegister<FVector> register = new DelegateRegister<>();
 
@@ -46,9 +45,7 @@ public class AcceleroMeterMonitor implements SensorMonitor {
 
     @Override
     public void updateSensor(SensorEvent e) {
-        velocity.setX(e.values[0]);
-        velocity.setY(e.values[1]);
-        velocity.setZ(e.values[2]);
+        FVector velocity = new FVector(e.values[0],e.values[1],e.values[2]);
         register.invokeAll(velocity);
     }
 }
