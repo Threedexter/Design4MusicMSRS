@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import android.widget.Button;
 
 public class Record extends AppCompatActivity {
+
     ImageButton RecordButton;
     Button SetButton;
 
@@ -19,11 +20,9 @@ public class Record extends AppCompatActivity {
         RecordButton.setOnClickListener(imgButtonHandler);
 
         RecordButton.setTag(R.drawable.record);
-
         SetButton= (Button)findViewById(R.id.btnSet);
 
         SetButton.setOnClickListener( new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 RecordButton.setVisibility(View.VISIBLE);
@@ -35,7 +34,6 @@ public class Record extends AppCompatActivity {
     }
 
     View.OnClickListener imgButtonHandler = new View.OnClickListener() {
-
         public void onClick(View v) {
             int resId = (Integer) RecordButton.getTag();
             if(resId == R.drawable.record) {
@@ -44,12 +42,9 @@ public class Record extends AppCompatActivity {
             }
             else
             {
-
                 RecordButton.setVisibility(View.INVISIBLE);
                 SetButton.setVisibility(View.VISIBLE);
             }
-
-
         }
     };
 
