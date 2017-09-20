@@ -51,6 +51,11 @@ public class Matcher extends Recorder {
         match(vector);
     }
 
+    @Override
+    public void stop() {
+        recording = false;
+    }
+
     private void match(FVector v) {
         for (GestureDetector g : gestures) {
             g.matchExpectations(v);

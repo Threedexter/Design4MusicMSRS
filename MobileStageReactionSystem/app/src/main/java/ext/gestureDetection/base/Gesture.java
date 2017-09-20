@@ -11,6 +11,8 @@ public class Gesture {
     private float tolerance;
     private String name;
 
+    public Gesture () { }
+
     public Gesture(float tolerance, List<FVector> movement, String name) {
         this.movement = movement;
         this.tolerance = tolerance;
