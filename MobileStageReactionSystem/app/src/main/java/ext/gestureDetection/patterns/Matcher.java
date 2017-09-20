@@ -52,55 +52,12 @@ public class Matcher extends Recorder {
     }
 
     private void match(FVector v) {
-        int maxErr = 3;
-
-        // for each gesture
         for (GestureDetector g : gestures) {
-
-            // Get tolerance
-            float t = g.getGesture().getTolerance();
-
-            // Get index of gesture and match the vector
-            FVector vg = g.getGesture().getMovement().get(g.getIndex());
-
-            if (!checkIfInBoundaries(vg, v, t)) {
-                // if ongoing
-                if (g.isOngoing()) {
-                    // Count error
-                    g.raiseErrorCount();
-                    g.raiseIndex();
-
-                    // if no more errors are accepted
-                    if (g.getErrorCount() >= maxErr) {
-                        g.resetErrors();
-                        g.resetIndex();
-                    }
-                }
-            } else {
-                g.raiseIndex();
-                g.resetErrors();
-            }
-
-            Log.d("\t\tINDEX: ", "" + g.getIndex());
-
-            if (g.shouldTrigger()) {
-                Log.d("\t\tEVENT: ", "TRIGGERED");
+            g.matchExpectations(v);
+            if (g.matchedGesture()) {
                 register.invokeAll(g.getGesture());
-                g.resetErrors();
-                g.resetIndex();
+                g.reset();
             }
         }
-    }
-
-    //todo: move for UnitTests
-    private boolean checkIfInBoundaries(FVector current, FVector other, float tolerance) {
-        float d = current.length();
-        float o = other.length();
-
-        boolean ret = Math.abs((o - d * (1-tolerance)) / d) <= tolerance;
-        if (!ret) return ret;
-
-        // assuming that tolerance is a percentage of angle (180)
-        return 180 * tolerance > current.angleBetween(other);
     }
 }

@@ -1,5 +1,7 @@
 package ext.gestureDetection.base;
 
+import android.util.Log;
+
 /**
  * Created by Rowan on 18/09/17.
  */
@@ -73,7 +75,9 @@ public class FVector {
     }
 
     public boolean isBetween(FVector one, FVector other, float tolerance) {
-        return (isBetween(one.x, other.x, this.x, tolerance) && isBetween(one.y, other.y, this.y, tolerance) && isBetween(one.z, other.z, this.z, tolerance));
+        boolean is = (isBetween(one.x, other.x, this.x, tolerance) && isBetween(one.y, other.y, this.y, tolerance) && isBetween(one.z, other.z, this.z, tolerance));
+        Log.d("> isBetween", "is it? " + (is ? "Yes" : "No"));
+        return is;
     }
 
     private boolean isBetween(float l, float v, float what, float tolerance) { // tolerance of 0 means on the line drawn between x1 and x2. Tolerance > 0 means an orb around the point of the line
