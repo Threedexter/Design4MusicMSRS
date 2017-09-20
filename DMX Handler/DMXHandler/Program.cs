@@ -17,7 +17,7 @@ namespace DMXHandler
             artnet.EnableBroadcast = true;
 
             Console.WriteLine(artnet.BroadcastAddress.ToString());
-            artnet.Open(IPAddress.Parse("127.0.0.1"), IPAddress.Parse("255.255.255.0"));
+            artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.255"));
 
             byte[] _dmxData = new byte[511];
 
