@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.modals.Navigator;
+
 public class HomeScren extends AppCompatActivity {
 
     @Override
@@ -27,7 +29,7 @@ public class HomeScren extends AppCompatActivity {
             }
         });
 
-
+        new Navigator(this).show();
     }
 
     @Override

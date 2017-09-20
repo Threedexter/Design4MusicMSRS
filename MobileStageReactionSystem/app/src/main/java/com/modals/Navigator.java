@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.example.user.mobilestagereactionsystem.HomeScren;
-import com.example.user.mobilestagereactionsystem.InteractActivity;
+import com.example.user.mobilestagereactionsystem.Match;
+import com.example.user.mobilestagereactionsystem.Record;
 
 /**
  * Created by Rowan on 19/09/17.
@@ -34,10 +35,10 @@ public class Navigator {
                                     moveView(context, HomeScren.class);
                                     break;
                                 case 1 :
-                                    moveView(context, HomeScren.class);
+                                    moveView(context, Match.class);
                                     break;
                                 case 2 :
-                                    moveView(context, HomeScren.class);
+                                    moveView(context, Record.class);
                                     break;
                             }
                         }

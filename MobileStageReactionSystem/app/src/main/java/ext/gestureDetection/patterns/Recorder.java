@@ -60,14 +60,16 @@ public class Recorder {
 
     public void stop() {
         recording = false;
+        if (vectors.isEmpty()) return;
+
         long start = vectors.get(0).getTime();
         long end = vectors.get(vectors.size() - 1).getTime();
         List<TimedObject<FVector>> newList = new ArrayList<>();
 
         // Make a new list with objects within time reach
         for (TimedObject<FVector> to : vectors) {
-            if (to.getTime() > start + MILLISECONDS_DISREGARD_START // If the object was measured after the tolerance zone
-                    || to.getTime() < end + MILLISECONDS_DISREGARD_END) // If the object was measured before the tolerance zone
+            if (to.getTime() >= start + MILLISECONDS_DISREGARD_START // If the object was measured after the tolerance zone
+                    || to.getTime() <= end - MILLISECONDS_DISREGARD_END) // If the object was measured before the tolerance zone
             {
                 // Add to list
                 newList.add(to);
@@ -84,12 +86,18 @@ public class Recorder {
     }
 
     public List<FVector> getVectors() {
-        List<FVector> vectors = new ArrayList<>(this.vectors.size());
+        List<FVector> fvectors = new ArrayList<>(this.vectors.size());
 
         for (TimedObject<FVector> v : this.vectors) {
-            vectors.add(v.getObject());
+            fvectors.add(v.getObject());
         }
 
-        return vectors;
+        return fvectors;
+    }
+
+    public List<FVector> dumpGesture() {
+        List<FVector> fvectors = getVectors();
+        vectors.clear();
+        return fvectors;
     }
 }

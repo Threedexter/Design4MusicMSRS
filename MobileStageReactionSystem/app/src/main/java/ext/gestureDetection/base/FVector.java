@@ -1,5 +1,7 @@
 package ext.gestureDetection.base;
 
+import android.util.Log;
+
 /**
  * Created by Rowan on 18/09/17.
  */
@@ -46,12 +48,17 @@ public class FVector {
     }
 
     public float distanceTo(FVector other) {
+        if (other == this) return 0f;
         return (float) Math.sqrt(Math.pow(other.getX() - getX(), 2)
                 + Math.pow(other.getY() - getY(), 2)
                 + Math.pow(other.getZ() - getZ(), 2));
     }
 
-    public static FVector substract(FVector a, FVector b) {
+    public static float distance(FVector a, FVector b) {
+        return (Math.abs(a.distanceTo(b)));
+    }
+
+    public static FVector subtract(FVector a, FVector b) {
         return new FVector(a.getX() - b.getX(),
                 a.getY() - b.getY(),
                 a.getZ() - b.getZ());
@@ -67,8 +74,25 @@ public class FVector {
         return distanceTo(nullVector);
     }
 
+    public boolean isBetween(FVector one, FVector other, float tolerance) {
+        boolean is = (isBetween(one.x, other.x, this.x, tolerance) && isBetween(one.y, other.y, this.y, tolerance) && isBetween(one.z, other.z, this.z, tolerance));
+        Log.d("> isBetween", "is it? " + (is ? "Yes" : "No"));
+        return is;
+    }
+
+    private boolean isBetween(float l, float v, float what, float tolerance) { // tolerance of 0 means on the line drawn between x1 and x2. Tolerance > 0 means an orb around the point of the line
+        tolerance = Math.abs(tolerance); // positive only.
+        if (l <= v) { // if first is the smallest
+            // x should be bigger than first and smaller than biggest
+            return what >= l - tolerance && what <= v + tolerance;
+        } else  {
+            // x should be bigger than second and smaller than biggest
+            return what >= v - tolerance && what <= l + tolerance;
+        }
+    }
+
     public float angleBetween(FVector other) {
-        return 2.0f * (float) Math.atan(FVector.substract(this, other).length() / FVector.add(this, other).length());
+        return 2.0f * (float) Math.atan(FVector.subtract(this, other).length() / FVector.add(this, other).length());
     }
 
     @Override

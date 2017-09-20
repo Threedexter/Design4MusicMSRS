@@ -1,5 +1,7 @@
 package ext.gestureDetection.base;
 
+import java.util.List;
+
 /**
  * Created by Rowan on 18/09/17.
  */
@@ -24,35 +26,48 @@ public class GestureDetector {
         this.gesture = gesture;
     }
 
-    public boolean isOngoing() {
-        return this.index > 0;
-    }
-
-    public boolean shouldTrigger() {
-        return this.index == gesture.getMovement().size();
-    }
-
-    public void raiseIndex() {
-        this.index++;
-    }
-
-    public int getIndex() {
-        return this.index;
-    }
+    // Old, rough Framework
 
     public void resetIndex() {
         this.index = 0;
     }
 
-    public int getErrorCount() {
-        return this.errCount;
+    // New Framework
+
+    private boolean matched = false;
+
+    public void matchExpectations(FVector v) {
+        if (index == 0) {
+            calculateNextExpectations(v);
+        } else {
+            int chunk = 5;
+
+            if (index + chunk >= gesture.getMovement().size()) {
+                matched = true;
+                return;
+            }
+
+            // if v != in list of expectations with margin
+            FVector vg = gesture.getMovement().get(index);
+            FVector vg2 = gesture.getMovement().get(index + chunk);
+            if (v.isBetween(vg, vg2, gesture.getTolerance())) {
+                calculateNextExpectations(v);
+            } else {
+                reset();
+            }
+        }
     }
 
-    public void resetErrors() {
-        this.errCount = 0;
+    public boolean matchedGesture() {
+        return matched;
     }
 
-    public void raiseErrorCount() {
-        this.errCount++;
+    public void reset() {
+        matched = false;
+        resetIndex();
+    }
+
+    private void calculateNextExpectations(FVector v) {
+        index += 3;
     }
 }
