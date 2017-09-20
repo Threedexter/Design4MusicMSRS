@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class Record extends AppCompatActivity {
     ImageButton RecordButton;
+    Button SetButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,18 @@ public class Record extends AppCompatActivity {
 
         RecordButton.setTag(R.drawable.record);
 
+        SetButton= (Button)findViewById(R.id.btnSet);
+
+        SetButton.setOnClickListener( new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                RecordButton.setVisibility(View.VISIBLE);
+                SetButton.setVisibility(View.INVISIBLE);
+                RecordButton.setBackgroundResource(R.drawable.record);
+                RecordButton.setTag(R.drawable.record);
+            }
+        });
     }
 
     View.OnClickListener imgButtonHandler = new View.OnClickListener() {
@@ -33,11 +46,12 @@ public class Record extends AppCompatActivity {
             {
 
                 RecordButton.setVisibility(View.INVISIBLE);
-               Button setButton = (Button)findViewById(R.id.btnSet);
-                setButton.setVisibility(View.VISIBLE);
+                SetButton.setVisibility(View.VISIBLE);
             }
 
 
         }
     };
+
+
 }

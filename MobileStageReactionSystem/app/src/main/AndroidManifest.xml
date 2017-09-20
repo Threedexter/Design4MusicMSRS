@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".InteractActivity" />
-        <activity android:name=".CrowdMainActivity"></activity>
+        <activity android:name=".CrowdMainActivity" />
+        <activity android:name=".Record" />
+
     </application>
 
 </manifest>
