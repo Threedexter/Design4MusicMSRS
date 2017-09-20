@@ -157,7 +157,8 @@ namespace ArtNet.Sockets
 
         public void Send(ArtNetPacket packet)
         {
-            SendTo(packet.ToArray(), new IPEndPoint(BroadcastAddress, Port));
+            int bytes_sent = SendTo(packet.ToArray(), new IPEndPoint(BroadcastAddress, Port));
+            Console.WriteLine("Sent " + bytes_sent + " over UDP");
         }
       
         #endregion
