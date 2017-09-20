@@ -26,6 +26,8 @@ public class HomeScren extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 
     @Override
