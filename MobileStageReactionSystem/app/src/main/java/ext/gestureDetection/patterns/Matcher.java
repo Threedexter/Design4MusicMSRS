@@ -1,6 +1,7 @@
 package ext.gestureDetection.patterns;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +27,22 @@ public class Matcher extends Recorder {
         super();
     }
 
-    public DelegateRegister getRegister() {
-        return register;
-    }
-
     public Matcher(Context context) {
         super(context);
     }
 
-    public void addGesture(GestureDetector gesture) {
-        this.gestures.add(gesture);
+    public DelegateRegister getRegister() {
+        return register;
     }
 
-    public void addGestures(List<GestureDetector> gestures) {
-        this.gestures.addAll(gestures);
+    public void addGesture(Gesture gesture) {
+        this.gestures.add(new GestureDetector(gesture));
+    }
+
+    public void addGestures(List<Gesture> gestures) {
+        for (Gesture g : gestures) {
+            addGesture(g);
+        }
     }
 
     @Override
@@ -65,6 +68,7 @@ public class Matcher extends Recorder {
                 if (g.isOngoing()) {
                     // Count error
                     g.raiseErrorCount();
+                    g.raiseIndex();
 
                     // if no more errors are accepted
                     if (g.getErrorCount() >= maxErr) {
@@ -77,7 +81,10 @@ public class Matcher extends Recorder {
                 g.resetErrors();
             }
 
+            Log.d("\t\tINDEX: ", "" + g.getIndex());
+
             if (g.shouldTrigger()) {
+                Log.d("\t\tEVENT: ", "TRIGGERED");
                 register.invokeAll(g.getGesture());
                 g.resetErrors();
                 g.resetIndex();
