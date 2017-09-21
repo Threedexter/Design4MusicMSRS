@@ -14,14 +14,14 @@ public abstract class Debugger {
     private static DelegateRegister<String> register;
 
     public static void log(String s) {
-        log("LOGGER: ", s);
+        log("LOGGER:", s);
     }
 
     public static void log(String tag, String s) {
         if (log) {
             Log.d(tag, s);
             if (register != null) {
-                register.invokeAll(tag + s);
+                register.invokeAll(tag + " " + s);
             }
         }
     }
