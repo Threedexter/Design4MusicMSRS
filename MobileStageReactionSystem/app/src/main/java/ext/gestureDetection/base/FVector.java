@@ -2,6 +2,8 @@ package ext.gestureDetection.base;
 
 import android.util.Log;
 
+import com.back.Debugger;
+
 /**
  * Created by Rowan on 18/09/17.
  */
@@ -76,7 +78,7 @@ public class FVector {
 
     public boolean isBetween(FVector one, FVector other, float tolerance) {
         boolean is = (isBetween(one.x, other.x, this.x, tolerance) && isBetween(one.y, other.y, this.y, tolerance) && isBetween(one.z, other.z, this.z, tolerance));
-        Log.d("> isBetween", "is it? " + (is ? "Yes" : "No"));
+        Debugger.log("> isBetween", "is it? " + (is ? "Yes" : "No"));
         return is;
     }
 
@@ -89,6 +91,31 @@ public class FVector {
             // x should be bigger than second and smaller than biggest
             return what >= v - tolerance && what <= l + tolerance;
         }
+    }
+
+    public float sizesSmaller(FVector other) {
+        return (1/ sizesBigger(other));
+    }
+
+    public float sizesBigger(FVector other) {
+        //return divideBy(other).average();
+        return content() / other.content();
+    }
+
+    public float average() {
+        return (this.x + this.y + this.z) / 3;
+    }
+
+    public float content() {
+        return (this.x * this.y * this.z);
+    }
+
+    public FVector divideBy(FVector other) {
+        return new FVector(
+                this.x / other.getX(),
+                this.y / other.getY(),
+                this.z / other.getZ()
+        );
     }
 
     public float angleBetween(FVector other) {

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.back.Debugger;
 import com.modals.Navigator;
 
 public class HomeScren extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class HomeScren extends AppCompatActivity {
             }
         });
 
+        Debugger.setLogging(true);
         new Navigator(this).show();
     }
 

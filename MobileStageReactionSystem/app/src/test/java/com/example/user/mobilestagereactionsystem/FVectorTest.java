@@ -126,4 +126,21 @@ public class FVectorTest {
         Assert.assertTrue(t3.isBetween(a1, b1, 0.2f));
         Assert.assertFalse(t3.isBetween(a1, b1, 0));
     }
+
+    @Test
+    public void sizeTest() throws Exception{
+        FVector a1 = new FVector(2, 1, 1);
+        FVector b1 = new FVector(1, 1, 1);
+
+        System.out.println(a1.sizesBigger(b1));
+
+        Assert.assertTrue(a1.sizesBigger(b1) == 2);
+        Assert.assertTrue(b1.sizesBigger(a1) == 1/2f);
+
+        Assert.assertTrue(a1.sizesSmaller(b1) == 1/2f);
+        Assert.assertTrue(b1.sizesSmaller(a1) == 2);
+
+        Assert.assertTrue(a1.sizesSmaller(b1) == b1.sizesBigger(a1));
+        Assert.assertTrue(b1.sizesSmaller(a1) == a1.sizesBigger(b1));
+    }
 }
