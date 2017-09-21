@@ -6,10 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.back.Debugger;
+import com.back.MemoryGestureHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import ext.dataConversion.JSONConverter;
+import ext.gestureDetection.base.Delegate;
+import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Recorder;
 
 public class Record extends AppCompatActivity {
@@ -36,10 +41,12 @@ public class Record extends AppCompatActivity {
             public void onClick(View v) {
 
                 try {
-                    Log.d("\t\t\t", "SENDING");
-                    Log.d("\t\t\tGESTURE RESULT: ", JSONConverter.convertToJSON(rec.dumpGesture()));
+                    Debugger.log("\t\t\t", "SENDING");
+                    Gesture g = new Gesture(0.8f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
+                    MemoryGestureHolder.addGesture(g);
+                    Debugger.log("\t\t\tGESTURE RESULT: ", JSONConverter.convertToJSON(g));
                 } catch (JsonProcessingException e) {
-                    Log.d("\t\t\tGESTURE ERROR: ", e.getMessage());
+                    Debugger.log("\t\t\tGESTURE ERROR: ", e.getMessage());
                 }
                 RecordButton.setVisibility(View.VISIBLE);
                 SetButton.setVisibility(View.INVISIBLE);
@@ -48,6 +55,12 @@ public class Record extends AppCompatActivity {
             }
         });
 
+        Debugger.addDelegate(new Delegate<String>() {
+            @Override
+            public void invoke(String obj) {
+                ((TextView)findViewById(R.id.tvTitle)).setText(obj);
+            }
+        });
     }
 
     View.OnClickListener imgButtonHandler = new View.OnClickListener() {

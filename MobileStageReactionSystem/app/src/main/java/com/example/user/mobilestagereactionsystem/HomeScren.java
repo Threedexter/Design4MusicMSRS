@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.back.Debugger;
 import com.modals.Navigator;
 
 public class HomeScren extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class HomeScren extends AppCompatActivity {
             }
         });
 
+        Debugger.setLogging(true);
         new Navigator(this).show();
     }
 
@@ -38,6 +40,13 @@ public class HomeScren extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_home_scren, menu);
         return true;
     }
+
+    @Override
+    protected void onResume() {
+        new Navigator(this).show();
+        super.onResume();
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -15,7 +15,7 @@ import com.example.user.mobilestagereactionsystem.Record;
  */
 
 public class Navigator {
-    private static final String[] options = new String[]{"Home", "Effects", "Recordings"};
+    private static final String[] options = new String[]{"Home", "Test gesture", "Record"};
     private AlertDialog navigation;
     private Context context;
 
