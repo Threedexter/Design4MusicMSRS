@@ -3,6 +3,7 @@ package ext.gestureDetection.patterns;
 import android.content.Context;
 import android.util.Log;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,11 @@ public class Recorder {
 
     protected boolean recording = false;
 
-    private static final long MILLISECONDS_DISREGARD_START = 100;
-    private static final long MILLISECONDS_DISREGARD_END = 100;
+    private TimedObject s = new TimedObject(null);
+    private TimedObject e = new TimedObject(null);
+
+    private static final long MILLISECONDS_DISREGARD_START = 10;
+    private static final long MILLISECONDS_DISREGARD_END = 10;
 
     public Recorder() throws NoSensorHandlerException {
         this.monitor = new AcceleroMeterMonitor();
@@ -56,14 +60,16 @@ public class Recorder {
 
     public void start() {
         recording = true;
+        s.setTimeNow();
     }
 
     public void stop() {
         recording = false;
+        e.setTimeNow();
         if (vectors.isEmpty()) return;
 
-        long start = vectors.get(0).getTime();
-        long end = vectors.get(vectors.size() - 1).getTime();
+        long start = s.getTime();
+        long end = e.getTime();
         List<TimedObject<FVector>> newList = new ArrayList<>();
 
         // Make a new list with objects within time reach
