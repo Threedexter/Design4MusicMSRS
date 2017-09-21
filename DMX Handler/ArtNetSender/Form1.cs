@@ -30,8 +30,24 @@ namespace ArtNetSender
             {
                 artnet.EnableBroadcast = true;
                 if (Localcheckbox.Checked)
-                {
-                    artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.0"));
+                { 
+                    try
+                    {
+                        artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.0"));
+                    }
+                    catch (Exception)
+                    {
+                        try
+                        {
+                            artnet.Open(IPAddress.Parse("127.0.0.1"), IPAddress.Parse("255.255.255.0"));
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show("Something went wrong, \n" + ex.Message);
+                            return;
+                        }
+                    }
+                    
                 }
                 else
                 {
