@@ -58,7 +58,7 @@ public class Matcher extends Recorder {
 
     private void match(FVector v) {
         for (GestureDetector g : gestures) {
-            g.matchExpectations(v);
+            g.matchGesture(v);
             if (g.matchedGesture()) {
                 register.invokeAll(g.getGesture());
                 g.reset();

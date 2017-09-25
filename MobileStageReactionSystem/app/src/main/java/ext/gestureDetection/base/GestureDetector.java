@@ -10,12 +10,11 @@ public class GestureDetector {
     //public static int maxErrors = 3;
 
     private Gesture gesture;
-
-    private int index = 0;
-    private int errCount = 0;
+    private FVectorLine gestureLine;
 
     public GestureDetector(Gesture gesture) {
         this.gesture = gesture;
+        this.gestureLine = new FVectorLine(gesture.getMovement());
     }
 
     public Gesture getGesture() {
@@ -26,35 +25,16 @@ public class GestureDetector {
         this.gesture = gesture;
     }
 
-    // Old, rough Framework
-
-    public void resetIndex() {
-        this.index = 0;
-    }
-
     // New Framework
 
     private boolean matched = false;
 
-    public void matchExpectations(FVector v) {
-        if (index == 0) {
-            calculateNextExpectations(v);
-        } else {
-            int chunk = 5;
+    public void matchGesture(FVector v) {
+        gestureLine.setPointer(v);
+        matched = gestureLine.pointerOutOfBounds(gesture.getTolerance()) && gestureLine.pointerAtEnd();
 
-            if (index + chunk >= gesture.getMovement().size()) {
-                matched = true;
-                return;
-            }
-
-            // if v != in list of expectations with margin
-            FVector vg = gesture.getMovement().get(index);
-            FVector vg2 = gesture.getMovement().get(index + chunk);
-            if (v.isBetween(vg, vg2, gesture.getTolerance())) {
-                calculateNextExpectations(v);
-            } else {
-                reset();
-            }
+        if (gestureLine.pointerOutOfBounds(gesture.getTolerance())) {
+            gestureLine.resetPointer();
         }
     }
 
@@ -64,10 +44,6 @@ public class GestureDetector {
 
     public void reset() {
         matched = false;
-        resetIndex();
-    }
-
-    private void calculateNextExpectations(FVector v) {
-        index += 3;
+        gestureLine.resetPointer();
     }
 }
