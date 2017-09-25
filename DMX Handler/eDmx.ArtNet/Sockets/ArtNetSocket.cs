@@ -21,7 +21,7 @@ namespace ArtNet.Sockets
 
         public ArtNetSocket()
             : base(System.Net.Sockets.AddressFamily.InterNetwork, System.Net.Sockets.SocketType.Dgram, System.Net.Sockets.ProtocolType.Udp)
-        {            
+        {
         }
 
         #region Information
@@ -134,7 +134,7 @@ namespace ArtNet.Sockets
                 finally
                 {
                     //Attempt to recieve another packet.
-                    StartRecieve();
+                    StartRecieve(); 
                 }
             }
         }
@@ -158,9 +158,9 @@ namespace ArtNet.Sockets
         public void Send(ArtNetPacket packet)
         {
             int bytes_sent = SendTo(packet.ToArray(), new IPEndPoint(BroadcastAddress, Port));
-            Console.WriteLine("Sent " + bytes_sent + " over UDP");
+            //Console.WriteLine("Sent " + bytes_sent + " over UDP");
         }
-      
+
         #endregion
 
         protected override void Dispose(bool disposing)

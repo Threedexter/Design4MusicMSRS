@@ -1,9 +1,0 @@
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\bin\Debug\DMXHandler.exe.config
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\bin\Debug\DMXHandler.exe
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\bin\Debug\DMXHandler.pdb
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\bin\Debug\eDmx.ArtNet.dll
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\bin\Debug\eDmx.ArtNet.pdb
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\obj\Debug\DMXHandler.csprojResolveAssemblyReference.cache
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\obj\Debug\DMXHandler.csproj.CoreCompileInputs.cache
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\obj\Debug\DMXHandler.exe
-C:\Users\User\Documents\School\S7\GitHub\Design4MusicMSRS\DMX Handler\DMXHandler\obj\Debug\DMXHandler.pdb
