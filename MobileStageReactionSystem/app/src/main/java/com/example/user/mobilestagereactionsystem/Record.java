@@ -42,7 +42,7 @@ public class Record extends AppCompatActivity {
 
                 try {
                     Debugger.log("\t\t\t", "SENDING");
-                    Gesture g = new Gesture(0.8f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
+                    Gesture g = new Gesture(0.35f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
                     MemoryGestureHolder.addGesture(g);
                     Debugger.log("\t\t\tGESTURE RESULT: ", JSONConverter.convertToJSON(g));
                 } catch (JsonProcessingException e) {

@@ -132,8 +132,6 @@ public class FVectorTest {
         FVector a1 = new FVector(2, 1, 1);
         FVector b1 = new FVector(1, 1, 1);
 
-        System.out.println(a1.sizesBigger(b1));
-
         Assert.assertTrue(a1.sizesBigger(b1) == 2);
         Assert.assertTrue(b1.sizesBigger(a1) == 1/2f);
 
@@ -142,5 +140,97 @@ public class FVectorTest {
 
         Assert.assertTrue(a1.sizesSmaller(b1) == b1.sizesBigger(a1));
         Assert.assertTrue(b1.sizesSmaller(a1) == a1.sizesBigger(b1));
+    }
+
+    @Test
+    public void sizeDifferenceTest() throws Exception{
+        FVector a1 = new FVector(2, 1, 1);
+        FVector b1 = new FVector(1, 1, 1);
+        FVector c1 = new FVector(10, 10, 10);
+        FVector d1 = new FVector(10, 10, 9);
+        FVector d2 = new FVector(10, 10, 8);
+        FVector d3 = new FVector(10, 10, 7);
+
+        Assert.assertFalse(a1.isCompressionOf(b1, 0.2f));
+        Assert.assertFalse(a1.isEnlargementOf(b1, 0.2f));
+        Assert.assertFalse(a1.isSizedVersionOf(b1, 0.2f));
+
+        Assert.assertTrue(b1.isCompressionOf(c1, 0.2f));
+        Assert.assertFalse(b1.isEnlargementOf(c1, 0.2f));
+        Assert.assertTrue(c1.isEnlargementOf(b1, 0.2f));
+        Assert.assertTrue(c1.isSizedVersionOf(b1, 0.2f));
+        Assert.assertTrue(d1.isSizedVersionOf(c1, 0.2f));
+        Assert.assertTrue(b1.isSizedVersionOf(d1, 0.2f));
+
+        Assert.assertFalse(a1.isSizedVersionOf(c1, 0.2f));
+
+        Assert.assertTrue(b1.isSizedVersionOf(c1, 0.2f));
+        Assert.assertTrue(b1.isSizedVersionOf(d1, 0.2f));
+        Assert.assertTrue(b1.isSizedVersionOf(d2, 0.2f));
+        Assert.assertFalse(b1.isSizedVersionOf(d2, 0.1f));
+        Assert.assertFalse(b1.isSizedVersionOf(d3, 0.2f));
+    }
+
+    @Test
+    public void lowestTest() throws Exception{
+        FVector a1 = new FVector(2, 1, 1);
+        FVector b1 = new FVector(1, 1, 1);
+        FVector c1 = new FVector(10, 10, 10);
+        FVector d1 = new FVector(10, 3, 9);
+        FVector d2 = new FVector(10, -10, 8);
+        FVector d3 = new FVector(10, 10, 7);
+
+        Assert.assertTrue(a1.lowestValue() == 1);
+        Assert.assertTrue(b1.lowestValue() == 1);
+        Assert.assertTrue(c1.lowestValue() == 10);
+        Assert.assertTrue(d1.lowestValue() == 3);
+        Assert.assertTrue(d2.lowestValue() == -10);
+        Assert.assertTrue(d3.lowestValue() == 7);
+    }
+
+    @Test
+    public void aroundTest() throws Exception{
+        FVector a1 = new FVector(2, 1, 1);
+        FVector b1 = new FVector(1, 1, 1);
+        FVector c1 = new FVector(10, 10, 10);
+        FVector d1 = new FVector(10, 10, 9);
+        FVector d2 = new FVector(10, 10, 8);
+        FVector d3 = new FVector(10, 10, 7);
+
+        Assert.assertFalse(a1.isAround(b1, 0.2f));
+        Assert.assertTrue(a1.isAround(b1, 1));
+        Assert.assertTrue(b1.isAround(b1, 0.2f));
+        Assert.assertFalse(b1.isAround(c1, 0.2f));
+
+        Assert.assertTrue(d1.isAround(c1, 0.2f));
+        Assert.assertTrue(c1.isAround(d1, 0.2f));
+
+        Assert.assertTrue(c1.isAround(d2, 0.2f));
+        Assert.assertFalse(c1.isAround(d3, 0.2f));
+        Assert.assertTrue(c1.isAround(d3, 0.3f));
+    }
+
+    @Test
+    public void directionTest() throws Exception{
+        FVector d1 = new FVector(1, 1, 0.5f);
+        FVector d2 = new FVector(1, 1, -0.5f);
+        FVector l1 = new FVector(2, 1, 1);
+        FVector l2 = new FVector(2, 1, -1);
+        FVector l3 = new FVector(2, 1, -0.5f);
+        FVector l4 = new FVector(2, 1, 0.5f);
+
+        Assert.assertTrue(l1.sameDirectionsAs(d1, 0));
+        Assert.assertFalse(l2.sameDirectionsAs(d1, 0));
+        Assert.assertFalse(l3.sameDirectionsAs(d1, 0));
+        Assert.assertTrue(l4.sameDirectionsAs(d1, 0));
+        Assert.assertTrue(l4.sameDirectionsAs(d1, 0.5f));
+        Assert.assertFalse(l3.sameDirectionsAs(d1, 0));
+
+        Assert.assertFalse(l1.sameDirectionsAs(d2, 0));
+        Assert.assertTrue(l2.sameDirectionsAs(d2, 0));
+        Assert.assertTrue(l3.sameDirectionsAs(d2, 0));
+        Assert.assertFalse(l4.sameDirectionsAs(d2, 0));
+        Assert.assertTrue(l4.sameDirectionsAs(d2, 0.5f));
+        Assert.assertTrue(l3.sameDirectionsAs(d2, 0));
     }
 }
