@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using ArtNet.Packets;
+using ArtNet.Sockets;
+
+namespace DMXHandler
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            var artnet = new ArtNet.Sockets.ArtNetSocket();
+            artnet.EnableBroadcast = true;
+
+            Console.WriteLine(artnet.BroadcastAddress.ToString());
+            artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.255"));
+
+            byte[] _dmxData = new byte[511];
+
+            artnet.NewPacket += (object sender, ArtNet.Sockets.NewPacketEventArgs<ArtNet.Packets.ArtNetPacket> e) =>
+            {
+                if (e.Packet.OpCode == ArtNet.Enums.ArtNetOpCodes.Dmx)
+                {
+                    var packet = e.Packet as ArtNet.Packets.ArtNetDmxPacket;
+                    Console.Clear();
+
+                    if (packet.DmxData != _dmxData)
+                    {
+                        Console.WriteLine("New Packet");
+                        for (var i = 0; i < packet.DmxData.Length; i++)
+                        {
+                            if (packet.DmxData[i] != 0)
+                                Console.WriteLine(i + " = " + packet.DmxData[i]);
+
+                        };
+
+                        _dmxData = packet.DmxData;
+                    }
+                }
+            };
+
+            Console.ReadLine();
+
+        }
+
+        byte[] _dmxData = new byte[511];
+    }
+}

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Mobile Stage Reaction System</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_crowd_main">CrowdMainActivity</string>
+    <string name="Open">NavBar</string>
+    <string name="Close">NavBar</string>
 </resources>

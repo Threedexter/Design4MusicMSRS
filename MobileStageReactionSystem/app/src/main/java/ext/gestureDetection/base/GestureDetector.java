@@ -8,12 +8,11 @@ public class GestureDetector {
     //public static int maxErrors = 3;
 
     private Gesture gesture;
-
-    private int index = 0;
-    private int errCount = 0;
+    private FVectorLine gestureLine;
 
     public GestureDetector(Gesture gesture) {
         this.gesture = gesture;
+        this.gestureLine = new FVectorLine(gesture.getMovement());
     }
 
     public Gesture getGesture() {
@@ -24,35 +23,31 @@ public class GestureDetector {
         this.gesture = gesture;
     }
 
-    public boolean isOngoing() {
-        return this.index > 0;
+    // New Framework
+
+    private boolean matched = false;
+
+    public void matchGesture(FVector v) {
+        gestureLine.setPointer(v);
+
+        boolean outBounds = gestureLine.pointerOutOfBounds(gesture.getTolerance());
+        matched = outBounds && gestureLine.pointerAtEnd();
+        if (!outBounds) {
+            // check if movement is prolonged
+            outBounds = !gestureLine.towardsPeak(gesture.getTolerance());
+        }
+
+        if (outBounds) {
+            gestureLine.resetPointer();
+        }
     }
 
-    public boolean shouldTrigger() {
-        return this.index == gesture.getMovement().size();
+    public boolean matchedGesture() {
+        return matched;
     }
 
-    public void raiseIndex() {
-        this.index++;
-    }
-
-    public int getIndex() {
-        return this.index;
-    }
-
-    public void resetIndex() {
-        this.index = 0;
-    }
-
-    public int getErrorCount() {
-        return this.errCount;
-    }
-
-    public void resetErrors() {
-        this.errCount = 0;
-    }
-
-    public void raiseErrorCount() {
-        this.errCount++;
+    public void reset() {
+        matched = false;
+        gestureLine.resetPointer();
     }
 }

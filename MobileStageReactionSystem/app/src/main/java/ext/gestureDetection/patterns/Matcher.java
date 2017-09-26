@@ -1,6 +1,7 @@
 package ext.gestureDetection.patterns;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +27,22 @@ public class Matcher extends Recorder {
         super();
     }
 
-    public DelegateRegister getRegister() {
-        return register;
-    }
-
     public Matcher(Context context) {
         super(context);
     }
 
-    public void addGesture(GestureDetector gesture) {
-        this.gestures.add(gesture);
+    public DelegateRegister getRegister() {
+        return register;
     }
 
-    public void addGestures(List<GestureDetector> gestures) {
-        this.gestures.addAll(gestures);
+    public void addGesture(Gesture gesture) {
+        this.gestures.add(new GestureDetector(gesture));
+    }
+
+    public void addGestures(List<Gesture> gestures) {
+        for (Gesture g : gestures) {
+            addGesture(g);
+        }
     }
 
     @Override
@@ -48,56 +51,18 @@ public class Matcher extends Recorder {
         match(vector);
     }
 
+    @Override
+    public void stop() {
+        recording = false;
+    }
+
     private void match(FVector v) {
-        int maxErr = 3;
-
-        // for each gesture
         for (GestureDetector g : gestures) {
-
-            // Get tolerance
-            float t = g.getGesture().getTolerance();
-
-            // Get index of gesture and match the vector
-            FVector vg = g.getGesture().getMovement().get(g.getIndex());
-
-            if (!checkIfInBoundaries(vg, v, t)) {
-                // if ongoing
-                if (g.isOngoing()) {
-                    // Count error
-                    g.raiseErrorCount();
-
-                    // if no more errors are accepted
-                    if (g.getErrorCount() >= maxErr) {
-                        g.resetErrors();
-                        g.resetIndex();
-                    }
-                }
-            } else {
-                g.raiseIndex();
-                g.resetErrors();
-            }
-
-            if (g.shouldTrigger()) {
+            g.matchGesture(v);
+            if (g.matchedGesture()) {
                 register.invokeAll(g.getGesture());
-                g.resetErrors();
-                g.resetIndex();
+                g.reset();
             }
         }
-    }
-
-    //todo: move for UnitTests
-    private boolean checkIfInBoundaries(FVector current, FVector other, float tolerance) {
-        float d = current.length();
-        float o = other.length();
-
-        boolean ret = Math.abs((o - d * (1-tolerance)) / d) <= tolerance;
-        if (!ret) return ret;
-
-        // assuming that tolerance is a percentage of angle (180)
-        return 180 * tolerance > current.angleBetween(other);
-    }
-
-    public List<FVector> getVectors() {
-        return vectors;
     }
 }
