@@ -242,10 +242,12 @@ namespace ArtNetSender
                     break;
                 case Keys.OemMinus:
                     SendPacket(1, 253);
+                    SendPacket(1, 1);
                     LastPressedKey.Text = "HALT ACTIVE CHASERS";
                     break;
                 case Keys.OemPeriod:
                     SendPacket(1, 253);
+                    SendPacket(1, 1);
                     LastPressedKey.Text = "HALT ACTIVE CHASERS";
                     break;
             }
@@ -255,6 +257,25 @@ namespace ArtNetSender
         {
             SendPacket(1, 0);
             LastPressedKey.Text = "NaN";
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                groupBox1.Visible = true;
+                this.Size = new System.Drawing.Size(930, 322);
+            }
+            else
+            {
+                groupBox1.Visible = false;
+                this.Size = new System.Drawing.Size(174, 240);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

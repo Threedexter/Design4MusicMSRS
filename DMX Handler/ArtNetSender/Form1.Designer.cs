@@ -58,6 +58,8 @@
             this.IpTextBox = new System.Windows.Forms.TextBox();
             this.IpLabel = new System.Windows.Forms.Label();
             this.LastPressedKey = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -74,11 +76,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 38);
+            this.trackBar1.Location = new System.Drawing.Point(16, 45);
             this.trackBar1.Maximum = 254;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -91,7 +94,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 53);
+            this.label1.Location = new System.Drawing.Point(67, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 16);
             this.label1.TabIndex = 2;
@@ -99,7 +102,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 12);
+            this.numericUpDown1.Location = new System.Drawing.Point(16, 19);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             512,
             0,
@@ -122,7 +125,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(745, 195);
+            this.button1.Location = new System.Drawing.Point(7, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(145, 54);
             this.button1.TabIndex = 4;
@@ -134,7 +137,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(742, 179);
+            this.label2.Location = new System.Drawing.Point(4, 117);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
@@ -142,7 +145,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(104, 12);
+            this.numericUpDown2.Location = new System.Drawing.Point(108, 19);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             512,
             0,
@@ -166,7 +169,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(155, 53);
+            this.label3.Location = new System.Drawing.Point(159, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 16);
             this.label3.TabIndex = 7;
@@ -174,7 +177,7 @@
             // 
             // trackBar2
             // 
-            this.trackBar2.Location = new System.Drawing.Point(104, 38);
+            this.trackBar2.Location = new System.Drawing.Point(108, 45);
             this.trackBar2.Maximum = 254;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -185,7 +188,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(196, 12);
+            this.numericUpDown3.Location = new System.Drawing.Point(200, 19);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             512,
             0,
@@ -209,7 +212,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(247, 53);
+            this.label4.Location = new System.Drawing.Point(251, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 16);
             this.label4.TabIndex = 10;
@@ -217,7 +220,7 @@
             // 
             // trackBar3
             // 
-            this.trackBar3.Location = new System.Drawing.Point(196, 38);
+            this.trackBar3.Location = new System.Drawing.Point(200, 45);
             this.trackBar3.Maximum = 254;
             this.trackBar3.Name = "trackBar3";
             this.trackBar3.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -228,7 +231,7 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(288, 12);
+            this.numericUpDown4.Location = new System.Drawing.Point(292, 19);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             512,
             0,
@@ -252,7 +255,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(339, 53);
+            this.label5.Location = new System.Drawing.Point(343, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 16);
             this.label5.TabIndex = 13;
@@ -260,7 +263,7 @@
             // 
             // trackBar4
             // 
-            this.trackBar4.Location = new System.Drawing.Point(288, 38);
+            this.trackBar4.Location = new System.Drawing.Point(292, 45);
             this.trackBar4.Maximum = 254;
             this.trackBar4.Name = "trackBar4";
             this.trackBar4.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -271,7 +274,7 @@
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(380, 12);
+            this.numericUpDown5.Location = new System.Drawing.Point(384, 19);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             512,
             0,
@@ -295,7 +298,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(431, 53);
+            this.label6.Location = new System.Drawing.Point(435, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 16);
             this.label6.TabIndex = 16;
@@ -303,7 +306,7 @@
             // 
             // trackBar5
             // 
-            this.trackBar5.Location = new System.Drawing.Point(380, 38);
+            this.trackBar5.Location = new System.Drawing.Point(384, 45);
             this.trackBar5.Maximum = 254;
             this.trackBar5.Name = "trackBar5";
             this.trackBar5.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -314,7 +317,7 @@
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(472, 12);
+            this.numericUpDown6.Location = new System.Drawing.Point(476, 19);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             512,
             0,
@@ -338,7 +341,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(523, 53);
+            this.label7.Location = new System.Drawing.Point(527, 60);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 16);
             this.label7.TabIndex = 19;
@@ -346,7 +349,7 @@
             // 
             // trackBar6
             // 
-            this.trackBar6.Location = new System.Drawing.Point(472, 38);
+            this.trackBar6.Location = new System.Drawing.Point(476, 45);
             this.trackBar6.Maximum = 254;
             this.trackBar6.Name = "trackBar6";
             this.trackBar6.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -357,7 +360,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(564, 12);
+            this.numericUpDown7.Location = new System.Drawing.Point(568, 19);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             512,
             0,
@@ -381,7 +384,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(615, 53);
+            this.label8.Location = new System.Drawing.Point(619, 60);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 16);
             this.label8.TabIndex = 22;
@@ -389,7 +392,7 @@
             // 
             // trackBar7
             // 
-            this.trackBar7.Location = new System.Drawing.Point(564, 38);
+            this.trackBar7.Location = new System.Drawing.Point(568, 45);
             this.trackBar7.Maximum = 254;
             this.trackBar7.Name = "trackBar7";
             this.trackBar7.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -400,7 +403,7 @@
             // 
             // numericUpDown8
             // 
-            this.numericUpDown8.Location = new System.Drawing.Point(656, 12);
+            this.numericUpDown8.Location = new System.Drawing.Point(660, 19);
             this.numericUpDown8.Maximum = new decimal(new int[] {
             512,
             0,
@@ -424,7 +427,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(707, 53);
+            this.label9.Location = new System.Drawing.Point(711, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 16);
             this.label9.TabIndex = 25;
@@ -432,7 +435,7 @@
             // 
             // trackBar8
             // 
-            this.trackBar8.Location = new System.Drawing.Point(656, 38);
+            this.trackBar8.Location = new System.Drawing.Point(660, 45);
             this.trackBar8.Maximum = 254;
             this.trackBar8.Name = "trackBar8";
             this.trackBar8.Orientation = System.Windows.Forms.Orientation.Vertical;
@@ -444,7 +447,7 @@
             // Localcheckbox
             // 
             this.Localcheckbox.AutoSize = true;
-            this.Localcheckbox.Location = new System.Drawing.Point(745, 130);
+            this.Localcheckbox.Location = new System.Drawing.Point(7, 68);
             this.Localcheckbox.Name = "Localcheckbox";
             this.Localcheckbox.Size = new System.Drawing.Size(77, 17);
             this.Localcheckbox.TabIndex = 27;
@@ -454,7 +457,7 @@
             // 
             // IpTextBox
             // 
-            this.IpTextBox.Location = new System.Drawing.Point(768, 153);
+            this.IpTextBox.Location = new System.Drawing.Point(30, 91);
             this.IpTextBox.Name = "IpTextBox";
             this.IpTextBox.Size = new System.Drawing.Size(122, 20);
             this.IpTextBox.TabIndex = 28;
@@ -462,7 +465,7 @@
             // IpLabel
             // 
             this.IpLabel.AutoSize = true;
-            this.IpLabel.Location = new System.Drawing.Point(742, 156);
+            this.IpLabel.Location = new System.Drawing.Point(4, 94);
             this.IpLabel.Name = "IpLabel";
             this.IpLabel.Size = new System.Drawing.Size(20, 13);
             this.IpLabel.TabIndex = 29;
@@ -471,50 +474,74 @@
             // LastPressedKey
             // 
             this.LastPressedKey.AutoSize = true;
-            this.LastPressedKey.Location = new System.Drawing.Point(745, 89);
+            this.LastPressedKey.Location = new System.Drawing.Point(4, 20);
             this.LastPressedKey.Name = "LastPressedKey";
             this.LastPressedKey.Size = new System.Drawing.Size(38, 13);
             this.LastPressedKey.TabIndex = 30;
             this.LastPressedKey.Text = "NONE";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.numericUpDown2);
+            this.groupBox1.Controls.Add(this.trackBar1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.trackBar2);
+            this.groupBox1.Controls.Add(this.numericUpDown8);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.trackBar3);
+            this.groupBox1.Controls.Add(this.trackBar8);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.numericUpDown7);
+            this.groupBox1.Controls.Add(this.numericUpDown3);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.trackBar4);
+            this.groupBox1.Controls.Add(this.trackBar7);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.numericUpDown6);
+            this.groupBox1.Controls.Add(this.numericUpDown4);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.trackBar5);
+            this.groupBox1.Controls.Add(this.trackBar6);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.numericUpDown5);
+            this.groupBox1.Location = new System.Drawing.Point(158, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(750, 265);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Manual Control";
+            this.groupBox1.Visible = false;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(7, 45);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(97, 17);
+            this.checkBox1.TabIndex = 32;
+            this.checkBox1.Text = "Manual Control";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 261);
+            this.ClientSize = new System.Drawing.Size(158, 201);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LastPressedKey);
             this.Controls.Add(this.IpLabel);
             this.Controls.Add(this.IpTextBox);
             this.Controls.Add(this.Localcheckbox);
-            this.Controls.Add(this.numericUpDown8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.trackBar8);
-            this.Controls.Add(this.numericUpDown7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.trackBar7);
-            this.Controls.Add(this.numericUpDown6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.trackBar6);
-            this.Controls.Add(this.numericUpDown5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.trackBar5);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.trackBar4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.trackBar3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.trackBar1);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -533,6 +560,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,6 +599,8 @@
         private System.Windows.Forms.TextBox IpTextBox;
         private System.Windows.Forms.Label IpLabel;
         private System.Windows.Forms.Label LastPressedKey;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
