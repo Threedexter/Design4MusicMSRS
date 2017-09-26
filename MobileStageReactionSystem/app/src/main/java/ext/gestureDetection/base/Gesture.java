@@ -42,4 +42,9 @@ public class Gesture {
     public void setTolerance(float tolerance) {
         this.tolerance = tolerance;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

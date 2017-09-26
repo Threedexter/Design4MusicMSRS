@@ -3,11 +3,13 @@ package com.mock;
 import com.back.Debugger;
 import com.back.EffectContent;
 import com.back.IAlertContent;
+import com.back.MemoryGestureHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ext.gestureDetection.base.Delegate;
+import ext.gestureDetection.base.Gesture;
 
 /**
  * Created by Rowan on 26/09/17.
@@ -59,5 +61,11 @@ public abstract class Data {
             effects.add(f2);
         }
         return effects;
+    }
+
+    public static List<Gesture> getGestures() {
+        called();
+        
+        return MemoryGestureHolder.getGestures();
     }
 }
