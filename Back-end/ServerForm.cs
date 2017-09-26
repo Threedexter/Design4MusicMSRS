@@ -43,11 +43,11 @@ namespace GameSocket
         }
         private void SetupServer()
         {
-            lb_stt.Text = "Setting up server . . .";
+            lb_details.Text = "Setting up server . . .";
             _serverSocket.Bind(new IPEndPoint(IPAddress.Any, 100));
             _serverSocket.Listen(1);
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
-            lb_stt.Text = "Server up";
+            lb_details.Text = "Server up";
 
         }
         private void AppceptCallback(IAsyncResult ar)
@@ -56,8 +56,8 @@ namespace GameSocket
             __ClientSockets.Add(new SocketT2h(socket));
             list_Client.Items.Add(socket.RemoteEndPoint.ToString());
 
-            lb_soluong.Text = "Clients connected: " + __ClientSockets.Count.ToString();
-            lb_stt.Text = "Client connected. . .";
+            lb_general.Text = "Clients connected: " + __ClientSockets.Count.ToString();
+            lb_details.Text = "Client connected. . .";
             socket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, new AsyncCallback(ReceiveCallback), socket);
             _serverSocket.BeginAccept(new AsyncCallback(AppceptCallback), null);
 
@@ -84,7 +84,8 @@ namespace GameSocket
                         if (__ClientSockets[i]._Socket.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
                         {
                             __ClientSockets.RemoveAt(i);
-                            lb_soluong.Text = "Clients connected: " + __ClientSockets.Count;
+                            list_Client.Items.Remove(socket.RemoteEndPoint.ToString());
+                            lb_general.Text = "Clients connected: " + __ClientSockets.Count;
                           
                         }
                     }
@@ -140,7 +141,8 @@ namespace GameSocket
                         if (__ClientSockets[i]._Socket.RemoteEndPoint.ToString().Equals(socket.RemoteEndPoint.ToString()))
                         {
                             __ClientSockets.RemoveAt(i);
-                            lb_soluong.Text = "Clients connected: " + __ClientSockets.Count.ToString();
+                            list_Client.Items.Remove(socket.RemoteEndPoint.ToString());
+                            lb_general.Text = "Clients connected: " + __ClientSockets.Count.ToString();
                         }
                     }
                 }
@@ -173,6 +175,11 @@ namespace GameSocket
                 }
             }
             rich_Text.AppendText("\nServer: " + txt_Text.Text);
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
