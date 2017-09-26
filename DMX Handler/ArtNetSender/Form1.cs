@@ -30,7 +30,7 @@ namespace ArtNetSender
             {
                 artnet.EnableBroadcast = true;
                 if (Localcheckbox.Checked)
-                { 
+                {
                     try
                     {
                         artnet.Open(IPAddress.Parse("192.168.56.1"), IPAddress.Parse("255.255.255.0"));
@@ -41,13 +41,13 @@ namespace ArtNetSender
                         {
                             artnet.Open(IPAddress.Parse("127.0.0.1"), IPAddress.Parse("255.255.255.0"));
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             MessageBox.Show("Something went wrong, \n" + ex.Message);
                             return;
                         }
                     }
-                    
+
                 }
                 else
                 {
@@ -145,6 +145,116 @@ namespace ArtNetSender
             {
                 IpTextBox.Enabled = false;
             }
+            else
+            {
+                IpTextBox.Enabled = true;
+            }
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                    SendPacket(1, 3);
+                    LastPressedKey.Text = "Activate Chaser 1";
+                    break;
+                case Keys.D2:
+                    SendPacket(1, 26);
+                    LastPressedKey.Text = "Activate Chaser 2";
+                    break;
+                case Keys.D3:
+                    SendPacket(1, 51);
+                    LastPressedKey.Text = "Activate Chaser 3";
+                    break;
+                case Keys.D4:
+                    SendPacket(1, 76);
+                    LastPressedKey.Text = "Activate Chaser 4";
+                    break;
+                case Keys.D5:
+                    SendPacket(1, 101);
+                    LastPressedKey.Text = "Activate Chaser 5";
+                    break;
+                case Keys.D6:
+                    SendPacket(1, 126);
+                    LastPressedKey.Text = "Activate Chaser 6";
+                    break;
+                case Keys.D7:
+                    SendPacket(1, 151);
+                    LastPressedKey.Text = "Activate Chaser 7";
+                    break;
+                case Keys.D8:
+                    SendPacket(1, 176);
+                    LastPressedKey.Text = "Activate Chaser 8";
+                    break;
+                case Keys.D9:
+                    SendPacket(1, 201);
+                    LastPressedKey.Text = "Activate Chaser 9";
+                    break;
+                case Keys.D0:
+                    SendPacket(1, 226);
+                    LastPressedKey.Text = "Activate Chaser 10";
+                    break;
+                case Keys.NumPad1:
+                    SendPacket(1, 3);
+                    LastPressedKey.Text = "Activate Chaser 1";
+                    break;
+                case Keys.NumPad2:
+                    SendPacket(1, 26);
+                    LastPressedKey.Text = "Activate Chaser 2";
+                    break;
+                case Keys.NumPad3:
+                    SendPacket(1, 51);
+                    LastPressedKey.Text = "Activate Chaser 3";
+                    break;
+                case Keys.NumPad4:
+                    SendPacket(1, 76);
+                    LastPressedKey.Text = "Activate Chaser 4";
+                    break;
+                case Keys.NumPad5:
+                    SendPacket(1, 101);
+                    LastPressedKey.Text = "Activate Chaser 5";
+                    break;
+                case Keys.NumPad6:
+                    SendPacket(1, 126);
+                    LastPressedKey.Text = "Activate Chaser 6";
+                    break;
+                case Keys.NumPad7:
+                    SendPacket(1, 151);
+                    LastPressedKey.Text = "Activate Chaser 7";
+                    break;
+                case Keys.NumPad8:
+                    SendPacket(1, 176);
+                    LastPressedKey.Text = "Activate Chaser 8";
+                    break;
+                case Keys.NumPad9:
+                    SendPacket(1, 201);
+                    LastPressedKey.Text = "Activate Chaser 9";
+                    break;
+                case Keys.NumPad0:
+                    SendPacket(1, 226);
+                    LastPressedKey.Text = "Activate Chaser 10";
+                    break;
+                case Keys.OemMinus:
+                    SendPacket(1, 253);
+                    LastPressedKey.Text = "HALT ACTIVE CHASERS";
+                    break;
+                case Keys.OemPeriod:
+                    SendPacket(1, 253);
+                    LastPressedKey.Text = "HALT ACTIVE CHASERS";
+                    break;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            SendPacket(1, 0);
+            LastPressedKey.Text = "NaN";
         }
     }
 }

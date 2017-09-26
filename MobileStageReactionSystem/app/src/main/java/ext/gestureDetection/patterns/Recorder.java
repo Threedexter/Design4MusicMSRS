@@ -19,6 +19,18 @@ import ext.gestureDetection.monitors.AcceleroMeterMonitor;
  */
 
 public class Recorder {
+    private static List<Recorder> recorders = new ArrayList<>();
+    public static void stopAll() {
+        for (Recorder r : recorders
+             ) {
+            r.stop();
+        }
+    }
+
+    public static void wipeAll() {
+        recorders.clear();
+    }
+
     protected AcceleroMeterMonitor monitor;
     protected List<TimedObject<FVector>> vectors = new LimitedQueue<>(1000);
 
@@ -48,6 +60,7 @@ public class Recorder {
             }
         };
         this.monitor.attachSensorUpdateEvent(del);
+        recorders.add(this);
     }
 
     protected void record(FVector vector) {

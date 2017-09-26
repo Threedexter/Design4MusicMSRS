@@ -1,0 +1,16 @@
+C:\Users\sinne\Desktop\temp\GameSocket\bin\Debug\GameSocket.exe
+C:\Users\sinne\Desktop\temp\GameSocket\bin\Debug\GameSocket.pdb
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.Properties.Resources.resources
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\Server.csproj.GenerateResource.Cache
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.exe
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.pdb
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.Form1.resources
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\GameSocket.exe
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\GameSocket.pdb
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\bin\Debug\GameSocket.exe
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\bin\Debug\GameSocket.pdb
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\GameSocket.Form1.resources
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\GameSocket.Properties.Resources.resources
+C:\Users\sinne\Documents\GitHub\Design4MusicMSRSGITKRAKEN\Design4MusicMSRSGITKRAKEN\Back-end\obj\Debug\Server.csproj.GenerateResource.Cache
