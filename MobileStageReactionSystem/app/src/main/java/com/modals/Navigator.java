@@ -74,7 +74,7 @@ public class Navigator {
                     public void onClick(DialogInterface dialog, int which) {
                         a[which].trigger();
                     }
-                }).create().show();
+                }).setCancelable(false).create().show();
     }
 
     /**
