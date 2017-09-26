@@ -63,9 +63,19 @@ public abstract class Data {
         return effects;
     }
 
+    public static void addEffect(String s) {
+        Delegate<EffectContent> trigger = new Delegate<EffectContent>() {
+            @Override
+            public void invoke(EffectContent obj) {
+                Debugger.log(obj.getOptionName() + " : " + obj.getId());
+            }
+        };
+        effects.add(new EffectContent(s, trigger));
+    }
+
     public static List<Gesture> getGestures() {
         called();
-        
+
         return MemoryGestureHolder.getGestures();
     }
 }

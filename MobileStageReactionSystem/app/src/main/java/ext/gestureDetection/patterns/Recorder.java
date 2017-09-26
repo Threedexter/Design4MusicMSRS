@@ -100,6 +100,10 @@ public class Recorder {
         this.vectors = newList;
     }
 
+    public boolean isRecording() {
+        return recording;
+    }
+
     public void clear() {
         this.vectors.clear();
     }

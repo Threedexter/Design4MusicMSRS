@@ -3,13 +3,9 @@ package com.example.user.mobilestagereactionsystem;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.graphics.PorterDuff;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -33,9 +29,6 @@ public class RecordingActivity extends NavigationAppActivity {
 
     private Recorder rec;
     private String m_Text = "";
-
-
-
 
     private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
         @Override
@@ -68,7 +61,6 @@ public class RecordingActivity extends NavigationAppActivity {
                             Navigator.createAlertDialog(RecordingActivity.this, "Choose effect", Data.getEffects());
                         }
                     });
-
                     builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -76,15 +68,7 @@ public class RecordingActivity extends NavigationAppActivity {
                             rec.dumpGesture();
                         }
                     });
-
                     builder.show();
-
-
-
-                    //Gesture g = new Gesture(0.35f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
-                    //MemoryGestureHolder.addGesture(g);
-                    //Navigator.createAlertDialog(this, "Connect effect", Data.getEffects());
-
                     break;
                 case MotionEvent.ACTION_DOWN:
                     rec.start();
@@ -101,18 +85,11 @@ public class RecordingActivity extends NavigationAppActivity {
 
         rec = new Recorder(getApplicationContext());
 
-
+        this.setTitle("Record");
 
         // Capture our button from layout
         ImageButton button = (ImageButton)findViewById(R.id.btRecord);
         // Register the onClick listener with the implementation above
         button.setOnTouchListener(mOnTouchListener);
-
-
     }
-
-
-
-
-
 }

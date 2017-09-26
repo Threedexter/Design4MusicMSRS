@@ -4,14 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Debug;
-import android.util.Log;
 
-import com.back.Debugger;
 import com.back.IAlertContent;
-import com.example.user.mobilestagereactionsystem.HomeScren;
-import com.example.user.mobilestagereactionsystem.Match;
-import com.example.user.mobilestagereactionsystem.Record;
 
 import java.util.List;
 
@@ -19,40 +13,7 @@ import java.util.List;
  * Created by Rowan on 19/09/17.
  */
 
-public class Navigator {
-    private static final String[] options = new String[]{"Home", "Test gesture", "Record"};
-    private AlertDialog navigation;
-    private Context context;
-
-    public Navigator(Context context) {
-        this.context = context;
-        createNavigation();
-    }
-
-    /**
-     * Creates the navigation alert dialog to call
-     */
-    private void createNavigation() {
-        if (navigation == null) {
-            navigation = new AlertDialog.Builder(context).setTitle("Menu")
-                    .setItems(options, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d("MENU: ", options[which]);
-                            switch (which) {
-                                case 0 :
-                                    moveView(context, HomeScren.class);
-                                    break;
-                                case 1 :
-                                    moveView(context, Match.class);
-                                    break;
-                                case 2 :
-                                    moveView(context, Record.class);
-                                    break;
-                            }
-                        }
-                    }).create();
-        }
-    }
+public abstract class Navigator {
 
     /**
      * Generates and displays an alert dialog with options
@@ -75,13 +36,6 @@ public class Navigator {
                         a[which].trigger();
                     }
                 }).setCancelable(false).create().show();
-    }
-
-    /**
-     * Shows a quick mock-up navigation
-     */
-    public void show() {
-        navigation.show();
     }
 
     /**

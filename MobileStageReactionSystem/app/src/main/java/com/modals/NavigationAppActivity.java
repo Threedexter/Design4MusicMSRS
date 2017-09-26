@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.back.Debugger;
 import com.example.user.mobilestagereactionsystem.EffectsActivity;
@@ -24,6 +25,7 @@ import ext.gestureDetection.patterns.Recorder;
 
 public abstract class NavigationAppActivity extends AppCompatActivity {
     private DrawerLayout dl;
+    protected View thisView;
     private ActionBarDrawerToggle abdt;
 
     @Override
@@ -67,6 +69,12 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
         abdt.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void setContentView(View view) {
+        thisView = view;
+        super.setContentView(view);
     }
 
     @Override
