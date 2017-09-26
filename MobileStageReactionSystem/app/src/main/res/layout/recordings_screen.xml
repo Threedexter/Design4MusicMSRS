@@ -18,7 +18,20 @@
             android:layout_width="107dp"
             android:layout_height="107dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/record" />
+            android:background="@drawable/round_button"
+          />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#ededed"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="Rec." />
+
+
     </FrameLayout>
 
     <android.support.design.widget.NavigationView

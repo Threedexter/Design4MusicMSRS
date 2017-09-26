@@ -14,7 +14,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.back.MemoryGestureHolder;
+import com.mock.Data;
 import com.modals.NavigationAppActivity;
+import com.modals.Navigator;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Recorder;
@@ -51,6 +56,16 @@ public class RecordingActivity extends NavigationAppActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             m_Text = input.getText().toString();
+
+                            if (m_Text.isEmpty()) {
+                                String timeStamp = new SimpleDateFormat("MMdd_HHmmss").format(Calendar.getInstance().getTime());
+                                m_Text = "Recording " + timeStamp;
+
+                            }
+                            Gesture g = new Gesture(0.35f, rec.dumpGesture(), m_Text);
+                            MemoryGestureHolder.addGesture(g);
+
+                            Navigator.createAlertDialog(RecordingActivity.this, "Choose effect", Data.getEffects());
                         }
                     });
 
