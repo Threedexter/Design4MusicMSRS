@@ -146,5 +146,63 @@ namespace ArtNetSender
                 IpTextBox.Enabled = false;
             }
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.D1:
+                    SendPacket(1, 3);
+                    LastPressedKey.Text = "Activate Chaser 1";
+                    break;
+                case Keys.D2:
+                    SendPacket(1, 26);
+                    LastPressedKey.Text = "Activate Chaser 2";
+                    break;
+                case Keys.D3:
+                    SendPacket(1, 51);
+                    LastPressedKey.Text = "Activate Chaser 3";
+                    break;
+                case Keys.D4:
+                    SendPacket(1, 76);
+                    LastPressedKey.Text = "Activate Chaser 4";
+                    break;
+                case Keys.D5:
+                    SendPacket(1, 101);
+                    LastPressedKey.Text = "Activate Chaser 5";
+                    break;
+                case Keys.D6:
+                    SendPacket(1, 126);
+                    LastPressedKey.Text = "Activate Chaser 6";
+                    break;
+                case Keys.D7:
+                    SendPacket(1, 151);
+                    LastPressedKey.Text = "Activate Chaser 7";
+                    break;
+                case Keys.D8:
+                    SendPacket(1, 176);
+                    LastPressedKey.Text = "Activate Chaser 8";
+                    break;
+                case Keys.D9:
+                    SendPacket(1, 201);
+                    LastPressedKey.Text = "Activate Chaser 9";
+                    break;
+                case Keys.D0:
+                    SendPacket(1, 226);
+                    LastPressedKey.Text = "Activate Chaser 10";
+                    break;
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            SendPacket(1, 0);
+            LastPressedKey.Text = "NaN";
+        }
     }
 }

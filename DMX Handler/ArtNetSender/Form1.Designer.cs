@@ -57,6 +57,7 @@
             this.Localcheckbox = new System.Windows.Forms.CheckBox();
             this.IpTextBox = new System.Windows.Forms.TextBox();
             this.IpLabel = new System.Windows.Forms.Label();
+            this.LastPressedKey = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -467,11 +468,21 @@
             this.IpLabel.TabIndex = 29;
             this.IpLabel.Text = "IP:";
             // 
+            // LastPressedKey
+            // 
+            this.LastPressedKey.AutoSize = true;
+            this.LastPressedKey.Location = new System.Drawing.Point(745, 89);
+            this.LastPressedKey.Name = "LastPressedKey";
+            this.LastPressedKey.Size = new System.Drawing.Size(38, 13);
+            this.LastPressedKey.TabIndex = 30;
+            this.LastPressedKey.Text = "NONE";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 261);
+            this.Controls.Add(this.LastPressedKey);
             this.Controls.Add(this.IpLabel);
             this.Controls.Add(this.IpTextBox);
             this.Controls.Add(this.Localcheckbox);
@@ -501,8 +512,11 @@
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackBar1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -555,6 +569,7 @@
         private System.Windows.Forms.CheckBox Localcheckbox;
         private System.Windows.Forms.TextBox IpTextBox;
         private System.Windows.Forms.Label IpLabel;
+        private System.Windows.Forms.Label LastPressedKey;
     }
 }
 
