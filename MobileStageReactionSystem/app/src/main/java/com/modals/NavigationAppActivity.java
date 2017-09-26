@@ -10,6 +10,9 @@ import android.view.MenuItem;
 
 import com.back.Debugger;
 import com.example.user.mobilestagereactionsystem.R;
+import com.example.user.mobilestagereactionsystem.Record;
+
+import ext.gestureDetection.patterns.Recorder;
 
 /**
  * Created by Rowan on 26/09/17.
@@ -54,4 +57,10 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        Recorder.stopAll();
+        Recorder.wipeAll();
+        super.onBackPressed();
+    }
 }

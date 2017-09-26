@@ -1,9 +1,6 @@
 package com.example.user.mobilestagereactionsystem;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,17 +8,12 @@ import android.widget.TextView;
 
 import com.back.Debugger;
 import com.back.MemoryGestureHolder;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.modals.NavigationAppActivity;
-import com.modals.Navigator;
 
-import java.io.IOException;
 
-import ext.dataConversion.JSONConverter;
 import ext.gestureDetection.base.Delegate;
 import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Matcher;
-import ext.gestureDetection.patterns.Recorder;
 
 public class Match extends NavigationAppActivity {
 
@@ -61,8 +53,6 @@ public class Match extends NavigationAppActivity {
             }
         });
 
-        final Activity x = this;
-
         SetButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +60,6 @@ public class Match extends NavigationAppActivity {
                 SetButton.setVisibility(View.INVISIBLE);
                 RecordButton.setBackgroundResource(R.drawable.record);
                 RecordButton.setTag(R.drawable.record);
-                Navigator.moveView(x, HomeScren.class);
             }
         });
 
