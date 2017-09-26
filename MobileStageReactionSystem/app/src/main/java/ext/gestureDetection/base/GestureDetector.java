@@ -1,7 +1,5 @@
 package ext.gestureDetection.base;
 
-import java.util.List;
-
 /**
  * Created by Rowan on 18/09/17.
  */
@@ -31,9 +29,15 @@ public class GestureDetector {
 
     public void matchGesture(FVector v) {
         gestureLine.setPointer(v);
-        matched = gestureLine.pointerOutOfBounds(gesture.getTolerance()) && gestureLine.pointerAtEnd();
 
-        if (gestureLine.pointerOutOfBounds(gesture.getTolerance())) {
+        boolean outBounds = gestureLine.pointerOutOfBounds(gesture.getTolerance());
+        matched = outBounds && gestureLine.pointerAtEnd();
+        if (!outBounds) {
+            // check if movement is prolonged
+            outBounds = !gestureLine.towardsPeak(gesture.getTolerance());
+        }
+
+        if (outBounds) {
             gestureLine.resetPointer();
         }
     }

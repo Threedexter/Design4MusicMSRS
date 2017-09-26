@@ -11,6 +11,7 @@ import java.util.List;
 public class FVectorLine {
     private List<FVector> vectors;
 
+    private FVector peak;
     private FVector pointer;
     private boolean lastPeak = false;
     private int index = 0;
@@ -26,9 +27,16 @@ public class FVectorLine {
         this.pointer = pointer;
     }
 
+    public boolean towardsPeak(float tolerance) {
+        if (peak == null) {
+            return true;
+        }
+        return pointer.sameDirectionsAs(peak, tolerance);
+    }
+
     public boolean pointerOutOfBounds(float tolerance) {
         // get next peak (add all vectors)
-        FVector peak = vectorToNextPeak(tolerance);
+        peak = vectorToNextPeak(tolerance);
         if (peak == null) {
             Debugger.log("\t\tLAST FOUND");
             return lastPeak;
