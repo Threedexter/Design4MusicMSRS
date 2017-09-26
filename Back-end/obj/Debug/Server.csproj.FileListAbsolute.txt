@@ -1,0 +1,8 @@
+C:\Users\sinne\Desktop\temp\GameSocket\bin\Debug\GameSocket.exe
+C:\Users\sinne\Desktop\temp\GameSocket\bin\Debug\GameSocket.pdb
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.Properties.Resources.resources
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\Server.csproj.GenerateResource.Cache
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.exe
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.pdb
+C:\Users\sinne\Desktop\temp\GameSocket\obj\Debug\GameSocket.Form1.resources
