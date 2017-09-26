@@ -22,7 +22,7 @@
         >
     </item>
     <item
-        android:id="@+id/testrecord"
+        android:id="@+id/matchItem"
         android:title="Match gestures">
     </item>
 </menu>

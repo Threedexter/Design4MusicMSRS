@@ -9,8 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.back.Debugger;
+import com.example.user.mobilestagereactionsystem.EffectsActivity;
+import com.example.user.mobilestagereactionsystem.HomeScren;
+import com.example.user.mobilestagereactionsystem.ManageRecordingActivity;
+import com.example.user.mobilestagereactionsystem.Match;
 import com.example.user.mobilestagereactionsystem.R;
-import com.example.user.mobilestagereactionsystem.Record;
+import com.example.user.mobilestagereactionsystem.RecordingActivity;
 
 import ext.gestureDetection.patterns.Recorder;
 
@@ -33,9 +37,22 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
                                                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                                                            int id = item.getItemId();
 
-                                                           if (id == R.id.homeitem) {
-                                                               Debugger.log("MenuItem", "Home is clicked");
+                                                           if (id == R.id.homeItem) {
+                                                               Navigator.moveView(NavigationAppActivity.this, HomeScren.class);
                                                            }
+                                                           else if(id == R.id.manageRecordingItem){
+                                                               Navigator.moveView(NavigationAppActivity.this, ManageRecordingActivity.class);
+                                                           }
+                                                           else if(id == R.id.recordingItem){
+                                                               Navigator.moveView(NavigationAppActivity.this, RecordingActivity.class);
+                                                           }
+                                                           else if (id == R.id.effectsItem){
+                                                               Navigator.moveView(NavigationAppActivity.this, EffectsActivity.class);
+                                                           }
+                                                           else if (id == R.id.matchItem){
+                                                               Navigator.moveView(NavigationAppActivity.this, Match.class);
+                                                           }
+
                                                            return false;
                                                        }
                                                    }

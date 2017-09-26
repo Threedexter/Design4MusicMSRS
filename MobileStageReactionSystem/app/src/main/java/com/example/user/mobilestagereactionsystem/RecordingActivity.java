@@ -1,20 +1,23 @@
 package com.example.user.mobilestagereactionsystem;
 
-<<<<<<< Updated upstream
-=======
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
->>>>>>> Stashed changes
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.graphics.PorterDuff;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
+import com.back.MemoryGestureHolder;
 import com.modals.NavigationAppActivity;
+
+import ext.gestureDetection.base.Gesture;
+import ext.gestureDetection.patterns.Recorder;
 
 
 /**
@@ -22,143 +25,79 @@ import com.modals.NavigationAppActivity;
  */
 
 public class RecordingActivity extends NavigationAppActivity {
-    private Button btRecord;
-    private Button btStop;
 
+    private Recorder rec;
+    private String m_Text = "";
+
+
+
+
+    private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_UP:
+                    // stop recording
+                    rec.stop();
+                    // show text + save button
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RecordingActivity.this);
+                    final EditText input = new EditText(RecordingActivity.this);
+                    builder.setTitle("Save recording as...");
+                    builder.setView(input);
+                    builder.setCancelable(false);
+
+                    builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            m_Text = input.getText().toString();
+                        }
+                    });
+
+                    builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            rec.dumpGesture();
+                        }
+                    });
+
+                    builder.show();
+
+
+
+                    //Gesture g = new Gesture(0.35f, rec.dumpGesture(), "DYNAMIC_G_" + MemoryGestureHolder.getGestures().size());
+                    //MemoryGestureHolder.addGesture(g);
+                    //Navigator.createAlertDialog(this, "Connect effect", Data.getEffects());
+
+                    break;
+                case MotionEvent.ACTION_DOWN:
+                    rec.start();
+                    break;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.recordings_screen);
-<<<<<<< Updated upstream
         super.onCreate(savedInstanceState);
-=======
 
-        dl = (DrawerLayout)findViewById(R.id.dl);
-        abdt = new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
-        abdt.setDrawerIndicatorEnabled(true);
-
-        dl.addDrawerListener(abdt);
-        abdt.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
-        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
-
-                                                       @Override
-                                                       public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                                                         int id = item.getItemId();
-
-                                                           if (id == R.id.homeItem)
-                                                           {
-                                                               Intent i=new Intent(RecordingActivity.this, HomeScren.class);
-                                                               startActivity(i);
-                                                           }
-                                                           else if(id == R.id.effectsItem)
-                                                           {
-                                                               Intent i=new Intent(RecordingActivity.this, EffectsActivity.class);
-                                                               startActivity(i);
-                                                           }
-                                                           else if(id == R.id.recordingItem)
-                                                           {
-                                                               Intent i=new Intent(RecordingActivity.this, RecordingActivity.class);
-                                                               startActivity(i);
-                                                           }
-                                                           else if(id == R.id.manageRecordingItem)
-                                                           {
-                                                               Intent i=new Intent(RecordingActivity.this, ManageRecordingActivity.class);
-                                                               startActivity(i);
-                                                           }
-                                                           return false;
-                                                       }
-                                                   }
-        );
->>>>>>> Stashed changes
-
-        // Makes the second button be invisible until someone clicks on record
-        btRecord = (Button) findViewById(R.id.btRecord);
-        btStop = (Button) findViewById(R.id.btStop);
-        btStop.setVisibility(View.GONE);
-
-        // Links the onclick trigger to the left button
-        btRecord.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                switch (btRecord.getText().toString()) {
-                    case "Record":
-                        ButtonRecord();
-                        break;
-                    case "Stop":
-                        ButtonStop();
-                        break;
-                    case "Clear":
-                        ButtonClear();
-                        break;
-                    case "Continue":
-                        ButtonContinue();
-                        break;
-
-                }
-
-            }
-        });
-
-        // Links the onclick trigger to the right button
-        btStop.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                switch (btStop.getText().toString()) {
-                    case "Pause":
-                        ButtonPause();
-                        break;
-                    case "Save":
-                        ButtonSave();
-                        break;
+        rec = new Recorder(getApplicationContext());
 
 
-                }
 
-            }
-        });
+        // Capture our button from layout
+        ImageButton button = (ImageButton)findViewById(R.id.btRecord);
+        // Register the onClick listener with the implementation above
+        button.setOnTouchListener(mOnTouchListener);
 
 
     }
 
-    private void ButtonRecord() {
-        btRecord.setText("Stop");
-        btRecord.getBackground().setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);
-        btStop.setVisibility(View.VISIBLE);
-    }
 
-    private void ButtonStop() {
-        btRecord.setText("Clear");
-        btRecord.getBackground().setColorFilter(0xff0000ff, PorterDuff.Mode.MULTIPLY);
-        btStop.setText("Save");
-    }
 
-    private void ButtonClear() {
-        btRecord.setText("Record");
-        btRecord.getBackground().setColorFilter(0xffcccccc, PorterDuff.Mode.MULTIPLY);
-        btStop.setVisibility(View.GONE);
-        btStop.setText("Pause");
-    }
-
-    private void ButtonSave() {
-        btRecord.setText("Record");
-        btStop.setText("Pause");
-        btRecord.getBackground().setColorFilter(0xffcccccc, PorterDuff.Mode.MULTIPLY);
-        btStop.setVisibility(View.GONE);
-    }
-
-    private void ButtonPause() {
-        btRecord.setText("Continue");
-        btRecord.getBackground().setColorFilter(0xffcccccc, PorterDuff.Mode.MULTIPLY);
-        btStop.setVisibility(View.GONE);
-    }
-
-    private void ButtonContinue() {
-        btRecord.setText("Stop");
-        btRecord.getBackground().setColorFilter(0xffff0000, PorterDuff.Mode.MULTIPLY);
-        btStop.setVisibility(View.VISIBLE);
-    }
 
 
 }
