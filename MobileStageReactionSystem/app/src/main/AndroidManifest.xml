@@ -16,6 +16,8 @@
         </activity>
         <activity android:name=".InteractActivity" />
         <activity android:name=".CrowdMainActivity"></activity>
+        <activity android:name=".EffectsActivity"></activity>
+        <activity android:name=".ManageRecordingActivity"></activity>
         <activity android:name=".RecordingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
