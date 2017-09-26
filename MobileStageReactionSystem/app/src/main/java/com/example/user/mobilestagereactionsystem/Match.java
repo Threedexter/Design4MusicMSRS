@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.back.Debugger;
 import com.back.MemoryGestureHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.modals.NavigationAppActivity;
 import com.modals.Navigator;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Matcher;
 import ext.gestureDetection.patterns.Recorder;
 
-public class Match extends AppCompatActivity {
+public class Match extends NavigationAppActivity {
 
     ImageButton RecordButton;
     Button SetButton;
@@ -31,9 +32,8 @@ public class Match extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
-
+        super.onCreate(savedInstanceState);
         RecordButton = (ImageButton) findViewById(R.id.ibRecord);
         RecordButton.setOnClickListener(imgButtonHandler);
 

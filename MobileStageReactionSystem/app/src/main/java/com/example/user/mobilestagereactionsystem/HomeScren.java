@@ -10,14 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.back.Debugger;
+import com.modals.NavigationAppActivity;
 import com.modals.Navigator;
 
-public class HomeScren extends AppCompatActivity {
+public class HomeScren extends NavigationAppActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

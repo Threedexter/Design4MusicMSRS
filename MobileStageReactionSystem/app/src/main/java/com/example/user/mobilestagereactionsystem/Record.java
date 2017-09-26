@@ -11,13 +11,14 @@ import android.widget.TextView;
 import com.back.Debugger;
 import com.back.MemoryGestureHolder;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.modals.NavigationAppActivity;
 
 import ext.dataConversion.JSONConverter;
 import ext.gestureDetection.base.Delegate;
 import ext.gestureDetection.base.Gesture;
 import ext.gestureDetection.patterns.Recorder;
 
-public class Record extends AppCompatActivity {
+public class Record extends NavigationAppActivity {
 
     ImageButton RecordButton;
     Button SetButton;
@@ -26,8 +27,8 @@ public class Record extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
+        super.onCreate(savedInstanceState);
 
         RecordButton = (ImageButton) findViewById(R.id.ibRecord);
         RecordButton.setOnClickListener(imgButtonHandler);
