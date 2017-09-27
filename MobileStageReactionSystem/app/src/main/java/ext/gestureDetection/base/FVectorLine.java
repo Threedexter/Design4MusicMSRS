@@ -35,7 +35,7 @@ public class FVectorLine {
         if (pointer == null) {
             return true;
         }
-        return !other.isAround(pointer, 0.5f);
+        return !other.isAround(pointer, 1);
     }
 
     public boolean towardsPeak(float tolerance) {
@@ -56,7 +56,7 @@ public class FVectorLine {
         // calculate how much times bigger the line is A -> B and B -> A
         float sizeDifference = 1;
 
-        if (pointer.sameDirectionsAs(peak, tolerance)) {
+        if (pointer.sameDirectionsAs(peak, tolerance * 3)) {
             // calculate how much difference they have
             sizeDifference = peak.content() / pointer.content();
             Debugger.log("\t\tStrength difference was " + sizeDifference);
