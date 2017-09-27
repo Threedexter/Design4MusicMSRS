@@ -37,38 +37,54 @@ public class RecordingActivity extends NavigationAppActivity {
                 case MotionEvent.ACTION_UP:
                     // stop recording
                     rec.stop();
-                    // show text + save button
+                    final Gesture g = new Gesture(0.25f, rec.dumpGesture(), "NONE");
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RecordingActivity.this);
-                    final EditText input = new EditText(RecordingActivity.this);
-                    builder.setTitle("Save recording as...");
-                    builder.setView(input);
-                    builder.setCancelable(false);
+                    // show text + save button if not dumb
+                    if (!g.isDumb()) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RecordingActivity.this);
+                        final EditText input = new EditText(RecordingActivity.this);
+                        builder.setTitle("Save recording as...");
+                        builder.setView(input);
+                        builder.setCancelable(false);
 
-                    builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            m_Text = input.getText().toString();
 
-                            if (m_Text.isEmpty()) {
-                                String timeStamp = new SimpleDateFormat("MMdd_HHmmss").format(Calendar.getInstance().getTime());
-                                m_Text = "Recording " + timeStamp;
+                        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                m_Text = input.getText().toString();
 
+                                if (m_Text.isEmpty()) {
+                                    String timeStamp = new SimpleDateFormat("MMdd_HHmmss").format(Calendar.getInstance().getTime());
+                                    m_Text = "Recording " + timeStamp;
+
+                                }
+                                g.setName(m_Text);
+                                MemoryGestureHolder.addGesture(g);
+
+                                Navigator.createAlertDialog(RecordingActivity.this, "Choose effect", Data.getEffects());
                             }
-                            Gesture g = new Gesture(0.25f, rec.dumpGesture(), m_Text);
-                            MemoryGestureHolder.addGesture(g);
-
-                            Navigator.createAlertDialog(RecordingActivity.this, "Choose effect", Data.getEffects());
-                        }
-                    });
-                    builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                            rec.dumpGesture();
-                        }
-                    });
-                    builder.show();
+                        });
+                        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                                rec.dumpGesture();
+                            }
+                        });
+                        builder.show();
+                    } else {
+                        // Show dialog that the gesture was dumb
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RecordingActivity.this);
+                        builder.setTitle("Woops!")
+                                .setMessage("You need to hold and move to record")
+                                .setNegativeButton("Darnit!", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                    }
                     break;
                 case MotionEvent.ACTION_DOWN:
                     rec.start();

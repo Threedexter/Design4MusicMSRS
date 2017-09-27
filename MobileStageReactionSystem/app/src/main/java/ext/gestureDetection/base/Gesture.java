@@ -1,5 +1,7 @@
 package ext.gestureDetection.base;
 
+import com.back.Debugger;
+
 import java.util.List;
 
 /**
@@ -41,6 +43,36 @@ public class Gesture {
 
     public void setTolerance(float tolerance) {
         this.tolerance = tolerance;
+    }
+
+    public boolean isDumb() {
+        // check if really short
+        // or containing barely any movements
+        return isTooShort() || barelyMoved();
+    }
+
+    public boolean isTooShort() {
+        return movement.size() < 4;
+    }
+
+    public boolean barelyMoved() {
+        FVector last = null;
+        float tol = 1f;
+
+        boolean movedEnough = false;
+        for (FVector v : movement) {
+            if (last != null) {
+                // compare
+                FVector t = FVector.subtract(last, v);
+                movedEnough = Math.abs(t.getX()) > tol ||  Math.abs(t.getY()) > tol || Math.abs(t.getZ()) > tol;
+            }
+            last = v; // set
+
+            if(movedEnough) {
+                return false; // not barely moved
+            }
+        }
+        return true; // barely moved
     }
 
     @Override
