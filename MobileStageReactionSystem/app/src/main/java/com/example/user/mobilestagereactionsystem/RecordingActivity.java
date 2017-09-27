@@ -55,7 +55,7 @@ public class RecordingActivity extends NavigationAppActivity {
                                 m_Text = "Recording " + timeStamp;
 
                             }
-                            Gesture g = new Gesture(0.35f, rec.dumpGesture(), m_Text);
+                            Gesture g = new Gesture(0.25f, rec.dumpGesture(), m_Text);
                             MemoryGestureHolder.addGesture(g);
 
                             Navigator.createAlertDialog(RecordingActivity.this, "Choose effect", Data.getEffects());

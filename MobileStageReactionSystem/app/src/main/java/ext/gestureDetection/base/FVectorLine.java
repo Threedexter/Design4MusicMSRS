@@ -27,9 +27,20 @@ public class FVectorLine {
         this.pointer = pointer;
     }
 
-    public boolean towardsPeak(float tolerance) {
-        if (peak == null) {
+    public boolean hasPeak() {
+        return peak != null;
+    }
+
+    public boolean hasMovement(FVector other) {
+        if (pointer == null) {
             return true;
+        }
+        return !other.isAround(pointer, 0.5f);
+    }
+
+    public boolean towardsPeak(float tolerance) {
+        if (!hasPeak()) {
+            return false;
         }
         return pointer.sameDirectionsAs(peak, tolerance);
     }
@@ -50,14 +61,26 @@ public class FVectorLine {
             sizeDifference = peak.content() / pointer.content();
             Debugger.log("\t\tStrength difference was " + sizeDifference);
 
+            // check if proportionate
+            if (!pointer.isSizedVersionOf(peak, 0.65f)) {
+                Debugger.log("\t\tPointer is not proportionate");
+                return true;
+            }
+
+            // check if strong enough
+            if (sizeDifference < 5) {
+                Debugger.log("\t\tPointer is out of bounds -- too weak for peak");
+                return true;
+            }
+
             // If the new vector is longer and not around the pointer, it is out of bounds
-            if (!pointer.isAround(peak, tolerance) && pointer.length() > peak.length()) { // big overhead
+            if (!pointer.isAround(peak, tolerance) && pointer.length() > peak.length() * (1 + tolerance)) { // big overhead
                 Debugger.log("\t\tPointer is out of bounds -- too strong for peak");
                 return true;
             }
         } else {
             // Not a box
-            Debugger.log("\t\tPointer was not a boxform \r\n\t\t" + pointer.toString() + " \r\n \t\tVS\r\n\t\t" + peak.toString());
+            Debugger.log("\t\tPointer was not towards goal \r\n\t\t" + pointer.toString() + " \r\n \t\tVS\r\n\t\t" + peak.toString());
             return true;
         }
 
@@ -117,6 +140,7 @@ public class FVectorLine {
 
     public void resetPointer() {
         lastPeak = false;
+        peak = null;
         pointer = null;
         index = 0;
     }

@@ -28,17 +28,22 @@ public class GestureDetector {
     private boolean matched = false;
 
     public void matchGesture(FVector v) {
-        gestureLine.setPointer(v);
+        if (gestureLine.hasMovement(v)) {
 
-        boolean outBounds = gestureLine.pointerOutOfBounds(gesture.getTolerance());
-        matched = outBounds && gestureLine.pointerAtEnd();
-        if (!outBounds) {
-            // check if movement is prolonged
-            outBounds = !gestureLine.towardsPeak(gesture.getTolerance());
-        }
+            gestureLine.setPointer(v);
 
-        if (outBounds) {
-            gestureLine.resetPointer();
+            boolean prolongedMovement = false;
+            // Check if movement was prolonged
+            if (gestureLine.hasPeak() && gestureLine.towardsPeak(gesture.getTolerance())) {
+                prolongedMovement = true;
+            }
+
+            boolean outBounds = gestureLine.pointerOutOfBounds(gesture.getTolerance());
+            matched = outBounds && gestureLine.pointerAtEnd();
+
+            if (outBounds && !prolongedMovement) {
+                gestureLine.resetPointer();
+            }
         }
     }
 
