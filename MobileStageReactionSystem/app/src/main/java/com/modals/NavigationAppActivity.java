@@ -7,6 +7,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -85,6 +87,13 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    // create an action bar button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home_scren, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
     @Override
     public void setContentView(View view) {
         thisView = view;
@@ -93,6 +102,11 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_help) {
+            startActivity(new Intent(NavigationAppActivity.this, PopScreenSummon.class));
+        }
         return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
