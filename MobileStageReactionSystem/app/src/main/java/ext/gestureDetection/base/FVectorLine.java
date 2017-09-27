@@ -53,23 +53,14 @@ public class FVectorLine {
             return lastPeak;
         }
 
-        // calculate how much times bigger the line is A -> B and B -> A
-        float sizeDifference = 1;
-
         if (pointer.sameDirectionsAs(peak, tolerance * 3)) {
             // calculate how much difference they have
-            sizeDifference = peak.content() / pointer.content();
+            float sizeDifference = peak.content() / pointer.content();
             Debugger.log("\t\tStrength difference was " + sizeDifference);
 
             // check if proportionate
-            if (!pointer.isSizedVersionOf(peak, 0.65f)) {
+            if (!pointer.isSizedVersionOf(peak, 0.9f)) {
                 Debugger.log("\t\tPointer is not proportionate");
-                return true;
-            }
-
-            // check if strong enough
-            if (sizeDifference < 5) {
-                Debugger.log("\t\tPointer is out of bounds -- too weak for peak");
                 return true;
             }
 
