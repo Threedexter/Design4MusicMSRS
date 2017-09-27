@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/homeItem"
-        android:title="Home"
-        >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Basic">
+        <menu>
+            <item
+                android:id="@+id/homeItem"
+                android:icon="@drawable/ic_home_black_24dp"
+                android:title="Home"></item>
+        </menu>
     </item>
-    <item
-        android:id="@+id/effectsItem"
-        android:title="Effects"
-        >
+    <item android:title="Management">
+        <menu>
+            <item
+                android:id="@+id/effectsItem"
+                android:icon="@drawable/ic_group_work_black_24dp"
+                android:title="Manage Effects"></item>
+            <item
+                android:id="@+id/manageRecordingItem"
+                android:icon="@drawable/ic_theaters_black_24dp"
+                android:title="Manage Recordings"></item>
+        </menu>
     </item>
-    <item
-        android:id="@+id/recordingItem"
-        android:title="Record"
-        >
-    </item>
-    <item
-        android:id="@+id/manageRecordingItem"
-        android:title="Manage Recordings"
-        >
-    </item>
-    <item
-        android:id="@+id/matchItem"
-        android:title="Match gestures">
+    <item android:title="Gestures">
+        <menu>
+            <item
+                android:id="@+id/recordingItem"
+                android:icon="@drawable/ic_camera_enhance_black_24dp"
+                android:title="Record Gesture"></item>
+            <item
+                android:id="@+id/matchItem"
+                android:icon="@drawable/ic_toll_black_24dp"
+                android:title="Match Gestures"></item>
+        </menu>
     </item>
 </menu>
