@@ -7,13 +7,43 @@ import android.content.Intent;
 
 import com.back.IAlertContent;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Rowan on 19/09/17.
  */
 
 public abstract class Navigator {
+
+    private static Set<String> screensVisited = new HashSet<>();
+    private static boolean ignoreHelp = false;
+
+    /**
+     * Adds to remember a screen was visited
+     * @param screen the screen that was visited
+     */
+    public static void addScreenVisited(String screen) {
+        screensVisited.add(screen);
+    }
+
+    /**
+     * Checks if a screen was visited before
+     * @param screen the screen to verify
+     * @return whether the screen was visited or not
+     */
+    public static boolean wasVisited(String screen) {
+        if (ignoreHelp) return true;
+        return screensVisited.contains(screen);
+    }
+
+    /**
+     * Ignores all future help screens
+     */
+    public static void ignoreHelp() {
+        ignoreHelp = true;
+    }
 
     /**
      * Generates and displays an alert dialog with options

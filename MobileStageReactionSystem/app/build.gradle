@@ -4,6 +4,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "26.0.1"
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
         applicationId "com.example.user.mobilestagereactionsystem"
         minSdkVersion 19
         targetSdkVersion 24

@@ -1,5 +1,6 @@
 package com.modals;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,11 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.back.Debugger;
 import com.example.user.mobilestagereactionsystem.EffectsActivity;
 import com.example.user.mobilestagereactionsystem.HomeScren;
 import com.example.user.mobilestagereactionsystem.ManageRecordingActivity;
 import com.example.user.mobilestagereactionsystem.Match;
+import com.example.user.mobilestagereactionsystem.PopScreenSummon;
 import com.example.user.mobilestagereactionsystem.R;
 import com.example.user.mobilestagereactionsystem.RecordingActivity;
 
@@ -32,6 +33,15 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        String whois = this.getClass().getName();
+
+        if (!Navigator.wasVisited(whois)) {
+            // show popup
+            startActivity(new Intent(NavigationAppActivity.this, PopScreenSummon.class));
+        }
+
+        Navigator.addScreenVisited(whois);
+
         NavigationView nav_view = (NavigationView) findViewById(R.id.nav_view);
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -40,21 +50,25 @@ public abstract class NavigationAppActivity extends AppCompatActivity {
                                                            int id = item.getItemId();
 
                                                            if (id == R.id.homeItem) {
+                                                               PopScreenSummon.setResource(R.drawable.homescreen);
                                                                Navigator.moveView(NavigationAppActivity.this, HomeScren.class);
                                                            }
                                                            else if(id == R.id.manageRecordingItem){
+                                                               PopScreenSummon.setResource(R.drawable.manage_recordings);
                                                                Navigator.moveView(NavigationAppActivity.this, ManageRecordingActivity.class);
                                                            }
                                                            else if(id == R.id.recordingItem){
+                                                               PopScreenSummon.setResource(R.drawable.record_tut);
                                                                Navigator.moveView(NavigationAppActivity.this, RecordingActivity.class);
                                                            }
                                                            else if (id == R.id.effectsItem){
+                                                               PopScreenSummon.setResource(R.drawable.effects);
                                                                Navigator.moveView(NavigationAppActivity.this, EffectsActivity.class);
                                                            }
                                                            else if (id == R.id.matchItem){
+                                                               PopScreenSummon.setResource(R.drawable.test_gestures);
                                                                Navigator.moveView(NavigationAppActivity.this, Match.class);
                                                            }
-
                                                            return false;
                                                        }
                                                    }
